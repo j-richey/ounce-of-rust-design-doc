@@ -21,6 +21,8 @@ such as `<https://github.com/>`__ and in Rust's crate registry,
 `<https://crates.io/>`__.
 
 
+.. _ref-learn-about-rust-objective:
+
 ================
 Learn About Rust
 ================

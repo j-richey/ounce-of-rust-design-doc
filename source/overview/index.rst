@@ -2,14 +2,17 @@
 Overview
 ########
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+..  toctree::
+    :maxdepth: 1
+    :caption: Contents:
 
-   objectives
+    objectives
+    current-system
+    proposed-system
+    users
+
 
 .. TODO:
-    Objectives of the Project
     Current System
     Summary of New System
     Interactions with Other Systems

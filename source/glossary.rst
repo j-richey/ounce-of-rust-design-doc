@@ -7,8 +7,13 @@ Glossary
 ..  glossary::
     :sorted:
 
-    TODO
-        Put some terms here.
+    Cargo
+        Cargo is :term:`Rust's <Rust programming language>` build system and
+        package manager.
+
+    Cargo.toml
+        The configuration file for :term:`Cargo`. This allows developers to
+        specify their projects metadata and dependencies.
 
     Rust programming language
         Rust is a systems programming language with a focus on safety and speed.
@@ -17,3 +22,4 @@ Glossary
 
 ..  TODO: terms to define:
     Tic Tac Toe?
+    Cargo.toml
