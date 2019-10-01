@@ -3,4 +3,10 @@ Proposed System
 ###############
 
 ..  TODO:
-    Name: ttt-core (ttt-cli, ttt-gui)
+    * Rust Based
+    * Open source reusable library
+    * Provides common functionality for Tic Tac Toe games
+      * AI
+      * Board management
+      * Checking for victory (and knowing what squares were involved in victory)
+    * Name of Library: ttt-core (ttt-cli, ttt-gui)

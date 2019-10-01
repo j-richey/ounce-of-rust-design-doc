@@ -9,11 +9,5 @@ Overview
     objectives
     current-system
     proposed-system
+    interactions-other-systems
     users
-
-
-.. TODO:
-    Current System
-    Summary of New System
-    Interactions with Other Systems
-    User Roles and Responsibilities

@@ -13,6 +13,65 @@ stories are written from the perspective of the users roles described in
 This section contains the user stories identified for this project.
 
 
+=====================
+Game State Management
+=====================
+| As a Rust application developer,
+| I want the library to contain functionality for managing the state of the game,
+| so I can focus on creating engaging user experiences.
+
+.. rubric:: Acceptance Criteria
+
+* The library exposes APIs for getting the current state and updating the state
+  of the game. This includes functionality for checking the victory condition
+  and determining the winner of the game, if any.
+
+.. rubric:: Notes
+
+The design details of the APIs are outside the scope of this requirements chapter.
+
+
+===============================================
+Know Cells that Contributed to Player's Victory
+===============================================
+| As a Rust application developer,
+| I want to know what cells contributed to the player's victory,
+| so I can draw a line through them or mark them in a special color.
+
+.. rubric:: Acceptance Criteria
+
+* When a player has won the game there is a way to obtain the board's cells that
+  contributed to the victory.
+
+
+==================
+Stable Library API
+==================
+| As a Rust application developer,
+| I want the library to have a stable API,
+| so that my application does not unexpectedly break if I use a different version of the library.
+
+.. rubric:: Acceptance Criteria
+
+* The library uses semantic versioning to clearly communicate when there are API
+  changes.
+* There are integration tests that help library developers detect if the
+  library's API changes.
+
+
+=========
+AI Player
+=========
+| As a Tic Tac Toe player,
+| I want to play against the computer,
+| as I do not always have a friend to play with.
+
+.. rubric:: Acceptance Criteria
+
+* The library provides an AI player that Rust application developers can
+  incorporate into their applications.
+
+
 ======================
 AI Difficulty Settings
 ======================
@@ -24,29 +83,34 @@ AI Difficulty Settings
 
 * The difficulty for AI players can be configured by the Rust application developer.
 
+.. rubric:: Notes
+
+The difficulty can be thought of as a probability of how likely the AI will make
+a mistake.
+
 
 ======================
 Maximum AI Update Time
 ======================
 | As a Rust application developer,
-| I want the AI to block for less than 1/300 a second when picking its next move,
+| I want the AI to block for less than one frame when picking its next move,
 | so it does not block my rendering thread making my animations choppy.
 
 .. rubric:: Acceptance Criteria
 
 * There is a benchmark that measures the worst case time the AI blocks while
   picking the next move.
-* The benchmark is run on the lowest supported hardware.
+* How to run the benchmark is documented so developers can quickly evaluate this
+  library to see if it meets their needs.
 
 .. rubric:: Notes
 
-* It is OK for the AI to spread the update over multiple iterations if necessary
-  to meet this requirement.
-* Limited resources may prevent testing on a verity of platforms. Therefore,
-  meeting this requirement on any one platform is considered successful.
-* 1/300 a second is ten times faster than what is considered the minimum
-  acceptable frame rate for an interactive game and twice as fast as the 144Hz
-  refresh rate of some modern monitors.
+Frame times can vary greatly depending on platform and application. For example,
+an update time of one second might be just fine for a casual Tic Tac Toe game.
+However, a Tick Tac Toe mini-game in a modern FPS is expected to take just a
+fraction of the 1/144 second frame time. Therefore, providing the tools to allow
+the Rust application developer to see if this library meets their needs is
+sufficient to fulfill this requirement.
 
 
 =======================

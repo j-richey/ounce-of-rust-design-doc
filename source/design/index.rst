@@ -3,6 +3,11 @@ Design
 ######
 
 .. TODO:
+    API Design
+    * Class Model / Traits Diagram
+    * Player
+    * AI
+    * State Diagram for the game?
     AI (Artificial Intelligence) Algorithms
     * Depth first search tree
     * Checks the state of the board: looks for end games: win, tie (cats game), loss
@@ -11,7 +16,3 @@ Design
     * This algorithm is perfect, thus toning down the difficulty involves the AI
       randomly not looking at a path. The probability of not going down a path
       is based on the difficulty setting.
-    Class Model / Traits Diagram
-    * Player
-    * AI
-    State Diagram for the game?
