@@ -1,8 +1,11 @@
-##########
-References
-##########
+.. The LaTeX output adds its own Bibliography section.
 
-.. TODO: HTML only for the header.
+..  only:: html
+
+    ##########
+    References
+    ##########
+
 
 
 ..  [Berezin-1999] Tanya Berezin (1999) *Writing a Software Requirements Document*.

@@ -2,19 +2,26 @@
 Ounce of Rust Project Design Document
 #####################################
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+..  toctree::
+    :maxdepth: 2
+    :caption: Contents:
 
-   introduction
-   overview/index
-   requirements/index
-   design/index
-   glossary
-   references
+    introduction
+    overview/index
+    requirements/index
+    design/index
+    glossary
+    references
 
 
-.. TODO: Web only:
-   download PDF
-   * :ref:`genindex`
-   * :ref:`search`
+..  only:: builder_html and (not singlehtml)
+
+    Also See:
+
+    * :ref:`genindex`
+    * :ref:`search`
+
+    Other Formats:
+
+    * `Download PDF <ounce_of_rust_project_design_document.pdf>`__
+    * `View as single page <singlepage.html>`__
