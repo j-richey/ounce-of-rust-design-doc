@@ -22,6 +22,7 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinxcontrib.plantuml',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -71,3 +72,12 @@ latex_show_urls = 'footnote'
 latex_elements = {
     'releasename': 'Rev.',
 }
+
+
+# -- Options for Plant UML -------------------------------------------------
+
+plantuml_output_format = 'svg_img'
+plantuml_latex_output_format = 'pdf'
+
+# Ensure problematic diagrams are indicated.
+plantuml_syntax_error_image = True
