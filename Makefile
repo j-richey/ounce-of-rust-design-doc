@@ -6,7 +6,10 @@ SOURCEDIR     = source
 BUILDDIR      = build
 PDFNAME		  = "ounce_of_rust_project_design_document.pdf"
 
-.PHONY: all html singlehtml latexpdf clean help
+SVGIMGFILES   = $(shell find $(SOURCEDIR) -type f -name '*.svg')
+PDFIMGFILES   = $(patsubst %.pdf, %.svg, $(SVGIMGFILES))
+
+.PHONY: all html singlehtml pdf _convert_svg clean help
 
 # All simply builds all the various outputs then ensures a copy of the PDF and
 # single page HTML is in the HTML output directory so these other varients can 
@@ -29,8 +32,12 @@ singlehtml:
 
 
 # TODO: reduce the amount of output from this command.
-pdf:
+pdf: _convert_svg
 	@$(SPHINXBUILD) -M latexpdf "$(SOURCEDIR)" "$(BUILDDIR)"
+
+
+_convert_svg: 
+	@python3 convert-svg-to-pdf.py "$(SOURCEDIR)"
 
 
 clean:

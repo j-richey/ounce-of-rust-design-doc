@@ -2,14 +2,14 @@
 Requirements
 ############
 
-This chapter describes the specific requirements of the Tic Tac Toe library.
+This chapter describes the detailed requirements of the Tic Tac Toe library.
+This includes the rules for playing Tic Tac Toe and user stories describing how
+the library is used.
 
 
 ..  toctree::
     :maxdepth: 1
     :caption: Contents:
 
+    ttt-rules
     user-stories
-
-
-.. TODO: Use cases / user stories / etc
