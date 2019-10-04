@@ -89,6 +89,23 @@ The difficulty can be thought of as a probability of how likely the AI will make
 a mistake.
 
 
+========================================
+Players Take Turns Having the First Move
+========================================
+| As a Tic Tac Toe player,
+| I want to have the first move on the next game if I did not have the first move this game,
+| so I have a better chance of winning the next game.
+
+.. rubric:: Acceptance Criteria
+
+* The game logic ensures the starting player alternates between games.
+
+.. rubric:: Notes
+
+The player who takes the first move has more wining possibilities than the
+second player. [#WiningMoves]_
+
+
 ======================
 Maximum AI Update Time
 ======================
@@ -152,6 +169,7 @@ Idiomatic Rust APIs
 
 .. rubric:: Acceptance Criteria
 
+* The Rust API Guidelines are consulted when designing the libraries API. [#RustAPIGuidelines]_
 * An experienced Rust programmer code reviews and signs off on the library's API.
 
 .. rubric:: Notes
@@ -187,7 +205,7 @@ Available on crates.io
 
 .. rubric:: Acceptance Criteria
 
-* The library can be downloaded from `crates.io <https://crates.io/>`__.
+* The library can be downloaded from crates.io.
 * The library can be obtained by simply specifying it as a dependency in Cargo.toml.
 
 
@@ -215,6 +233,15 @@ Permissive License
 
 * The library is released under a permissive open source license. The MIT license
   fulfills this requirement.
+
+
+
+..  rubric:: Footnotes
+
+..  [#WiningMoves] The player with the first move has about double the number of
+        winning possibilities. For details see
+        `Wikipedia's Tic-tac-toe page <https://en.wikipedia.org/wiki/Tic-tac-toe>`__.
+..  [#RustAPIGuidelines] See the [Rust-API-Guidelines]_ for details.
 
 
 
