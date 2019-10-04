@@ -1,12 +1,46 @@
 ###############
 Proposed System
 ###############
+This project creates a Rust library that application developers can use to create
+Tic Tac Toe games. The library contains common Tic Tac Toe functionality such as
+game state management and single player artificial intelligence. The library
+exposes this functionality through a well defined and documented public API.
+The library is open source and is available in Rust's package repository
+`<https://crates.io/>`__.
 
-..  TODO:
-    * Rust Based
-    * Open source reusable library
-    * Provides common functionality for Tic Tac Toe games
-      * AI
-      * Board management
-      * Checking for victory (and knowing what squares were involved in victory)
-    * Name of Library: ttt-core (ttt-cli, ttt-gui)
+By using this library application developers can focus on making flashy graphics
+or other unique Tic Tac Toe experience without worrying about the underlying game
+logic and management.
+
+
+===============================
+Game State and Board Management
+===============================
+A common task of Tic Tac Toe games is managing the state of the game. This
+includes knowing which player's turn it is, ensuring players cannot mark a
+previously marked square, and checking for victory or draw conditions.
+
+
+==========
+AI Players
+==========
+The library allows single player Tic Tac Toe games to be created by providing
+AI players. These players use artificial intelligence algorithms that pick a
+square to place the AI player's mark. The application developer has control over
+how difficult to win over the AI player.
+
+
+======================
+Available on crates.io
+======================
+The library is available on `<https://crates.io/>`__ and the source code released
+under a permissive open source license.
+
+The crate's name is: ``open_ttt_lib``. [#A]_ Future projects built around
+``open_ttt_lib`` may use ``open_ttt`` as part of their crate name.
+
+
+..  rubric:: Footnotes
+
+..  [#A] The naming conventions for crates is described in the
+        `Rust Style Guidelines <https://doc.rust-lang.org/1.0.0/style/style/naming/README.html>`__.
