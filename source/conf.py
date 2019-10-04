@@ -11,7 +11,7 @@ copyright = '2019, James Richey'
 author = 'James Richey'
 
 # The full version, including alpha/beta/rc tags
-release = 'draft 1'
+release = 'A draft 1'
 
 
 # -- General configuration ---------------------------------------------------
