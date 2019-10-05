@@ -13,6 +13,13 @@ author = 'James Richey'
 # The full version, including alpha/beta/rc tags
 release = 'A draft 1'
 
+# Base name (with out the extension) of the PDF file.
+_pdf_base_name = "{project} Rev {release}".format(
+    project=project, release=release).lower().replace(' ', '_')
+
+# Create a reStructuredText macro for downloading the PDF that includes the
+# correct filename based on revision.
+rst_epilog = '.. |pdf_download| replace:: `Download PDF <{}.pdf>`__'.format(_pdf_base_name)
 
 # -- General configuration ---------------------------------------------------
 
@@ -48,6 +55,14 @@ html_title = project + " Rev. " + release
 html_theme = 'alabaster'
 
 # For alabaster optoins see https://alabaster.readthedocs.io/en/latest/customization.html
+html_theme_options = {
+    'sidebar_collapse': True,
+    'extra_nav_links': {
+        "Download PDF": _pdf_base_name + ".pdf",
+        "View Single Page": "singlepage.html",
+        "GitHub Source": "https://github.com/j-richey/ounce-of-rust-design-doc",
+    },
+}
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -61,7 +76,7 @@ html_static_path = ['_static']
 latex_documents = [(
     master_doc,                         # startdocname
     # targetname, e.g. the name of the PDF file.
-    project.lower().replace(' ', '_') + '.tex',
+    _pdf_base_name + '.tex',
     project,                            # title
     author,                             # author
     'manual',                           # documentclass

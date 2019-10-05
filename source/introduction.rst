@@ -7,7 +7,7 @@ Introduction
 Purpose of this Document
 ========================
 This is the design document for the Ounce of Rust project. This document
-describes describes in detail the objectives requirements, and design
+describes in detail the objectives requirements, and design
 considerations of the project. This is invaluable for planning the project's
 tasks and milestones. Anyone wishing to understand the project and resulting
 deliverables is encouraged to read this document.

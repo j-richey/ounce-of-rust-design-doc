@@ -23,5 +23,5 @@ Ounce of Rust Project Design Document
 
     Other Formats:
 
-    * `Download PDF <ounce_of_rust_project_design_document.pdf>`__
+    * |pdf_download|
     * `View as single page <singlepage.html>`__

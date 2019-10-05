@@ -33,14 +33,27 @@ how difficult to win over the AI player.
 ======================
 Available on crates.io
 ======================
-The library is available on `<https://crates.io/>`__ and the source code released
-under a permissive open source license.
+The library is available on `<https://crates.io/>`__, the source code released
+under a permissive open source license, and the API documentation is hosted
+on a publicly accessible website.
 
-The crate's name is: ``open_ttt_lib``. [#A]_ Future projects built around
-``open_ttt_lib`` may use ``open_ttt`` as part of their crate name.
+
+============
+Deliverables
+============
+The project deliverables are:
+
+* ``open_ttt_lib`` crate. [#A]_
+* API documentation. [#B]_
+* Public source code repository with a tagged release.
 
 
 ..  rubric:: Footnotes
 
 ..  [#A] The naming conventions for crates is described in the
-        `Rust Style Guidelines <https://doc.rust-lang.org/1.0.0/style/style/naming/README.html>`__.
+         `Rust Style Guidelines <https://doc.rust-lang.org/1.0.0/style/style/naming/README.html>`__.
+         Future projects built around ``open_ttt_lib`` may use ``open_ttt`` as
+         part of their crate name.
+
+..  [#B] Popular places to host Rust API documentation include `<https://docs.rs/>`__
+         and `<https://pages.github.com/>`__.

@@ -4,12 +4,11 @@
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
-PDFNAME		  = "ounce_of_rust_project_design_document.pdf"
+PDFOUTPUT	  = $(wildcard $(BUILDDIR)/latex/*project*design*document*.pdf)
 
-SVGIMGFILES   = $(shell find $(SOURCEDIR) -type f -name '*.svg')
-PDFIMGFILES   = $(patsubst %.pdf, %.svg, $(SVGIMGFILES))
 
 .PHONY: all html singlehtml pdf _convert_svg clean help
+
 
 # All simply builds all the various outputs then ensures a copy of the PDF and
 # single page HTML is in the HTML output directory so these other varients can 
@@ -18,7 +17,7 @@ PDFIMGFILES   = $(patsubst %.pdf, %.svg, $(SVGIMGFILES))
 # they point to the correct location.
 all: html singlehtml pdf
 	@sed -r 's/href="index.html/href="singlepage.html/g' "$(BUILDDIR)/singlehtml/index.html" > "$(BUILDDIR)/html/singlepage.html"
-	@cp -v "$(BUILDDIR)/latex/$(PDFNAME)" "$(BUILDDIR)/html/"
+	@cp -v "$(PDFOUTPUT)" "$(BUILDDIR)/html/"
 
 
 html:
