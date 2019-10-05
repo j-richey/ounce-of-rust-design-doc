@@ -11,7 +11,7 @@ The rules for Tic Tac Toe are as follows:
    that already contains a mark cannot be updated or altered. Traditionally, the
    second player uses the letter *O* as their mark.
 #. Turns alternate between the players until the game is over.
-#. The game ends in a win when one of the players gets three of there marks in
+#. The game ends in a win when one of the players gets three of their marks in
    a line. That is: they have three marks in a row, column, or diagonally.
    Examples of winning games are shown in :numref:`fig-example-wining-games`.
 

@@ -5,22 +5,29 @@ the objectives are achieved.
 
 
 ## Building
-The documentation is rendered using [Sphinx](https://www.sphinx-doc.org/en/master/).
-To install Sphinx create a Python virtual environment then use `pip` to install
-the required packages.
+This documentation is rendered using [Sphinx](https://www.sphinx-doc.org/en/master/).
+The following applications are required to build this documentation:
+
+* Python 3.5 or newer
+* inkscape
+* plantuml
+* A LaTeX toolchain
+* [Sphinx](https://www.sphinx-doc.org/en/master/)
+
+On Ununtu / Debian system the required packages can be installed and 
+documentation built with: 
 
 ```
-$ python3 -m venv ounce-of-rust-docs
-$ source ounce-of-rust-docs/bin/activate
+$ sudo apt install texlive-full inkscape plantuml
+$ python3 -m venv ounce-of-rust-docs-venv
+$ source ounce-of-rust-docs-venv/bin/activate
 $ pip install -r requirements.txt
-```
+$ make
+``` 
 
-Once Sphinx is installed, use `make` to build the documentation. 
-```
-$ make html
-```
-
-The output will be in the `build` directory.
+The output will be in the `build` directory, specifically, the `build/html`
+directory contains the complete documentation including the PDF and single page
+versions and is suitable for copying to a web server for hosting the document.
 
 
 ## Editing
@@ -34,3 +41,7 @@ for headings:
 
 For details on reStructuredText as understood by Sphinx see
 [Sphinx's reStructuredText Primer](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html).
+
+When editing specific versions of the documentation can be built with `make html`
+or `make pdf` allowing one to quickly look at modifications.  See `make help` 
+for a complete list of output types.

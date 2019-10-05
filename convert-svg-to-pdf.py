@@ -43,7 +43,6 @@ def convert_svg_to_pdf(svg_name):
     """
     print("Converting: {}".format(svg_name))
 
-    #  inkscape -z -f Tic-tac-toe-game-1.svg --export-pdf="Tic-tac-toe-game-1.pdf"
     pdf_name = os.path.splitext(svg_name)[0] + ".pdf"
     args = ['inkscape', '-z',
             '-f', svg_name,

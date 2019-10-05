@@ -2,30 +2,38 @@
 Introduction
 ############
 
-====================
-Scope of the Project
-====================
-.. TOOD: What is the scope of this project.
-
 
 ========================
 Purpose of this Document
 ========================
-This design document describes in detail what the product does. This is
-invaluable for planning the project's tasks and milestones. Anyone wishing to
-understand the product is encouraged to read this document.
+This is the design document for the Ounce of Rust project. This document
+describes describes in detail the objectives requirements, and design
+considerations of the project. This is invaluable for planning the project's
+tasks and milestones. Anyone wishing to understand the project and resulting
+deliverables is encouraged to read this document.
+
+
+====================
+Scope of the Project
+====================
+The main deliverable of the Ounce of Rust project is a Rust crate that provides
+common Tic Tac Toe logic that can be used by other Rust applications. While there
+are existing crates that provide similar functionality, this project provides
+an opportunity to gain experience with Rust, its ecosystem, and general software
+development practices.
 
 
 =========================
 Overview of this Document
 =========================
 There are three main parts to this document. [#A]_ The :doc:`overview/index`
-chapter provides a general overview of the problem and how the product addresses
-this problem. The :doc:`requirements/index` chapter specifies the requirements
-that are met by the product. The :doc:`design/index` describes exactly how the
-product is designed to fulfill the requirements.
+chapter provides a general overview of the problems this project is intended to
+address and how the project addresses these problems. The :doc:`requirements/index`
+chapter specifies the requirements of the project. The :doc:`design/index`
+describes how the project's deliverables are designed to fulfill the requirements.
 
-The :doc:`glossary` defines terms that are used throughout this document.
+Additionally, the :doc:`glossary` defines terms that are used throughout this
+document.
 
 
 ..  rubric:: Footnotes

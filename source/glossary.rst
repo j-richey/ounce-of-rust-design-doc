@@ -15,6 +15,9 @@ Glossary
         The configuration file for :term:`Cargo`. This allows developers to
         specify their projects metadata and dependencies.
 
+    cat's game
+        Term used when a game of Tic Tac Toe ends in a draw where there is no winner.
+
     idiomatic coding
         Idiomatic coding is using familiar conventions, techniques, and practices
         of a particular programming language.
@@ -31,3 +34,4 @@ Glossary
 
 ..  TODO: terms to define:
     Tic Tac Toe?
+

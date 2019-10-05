@@ -31,9 +31,11 @@ singlehtml:
 	@$(SPHINXBUILD) -M singlehtml "$(SOURCEDIR)" "$(BUILDDIR)"
 
 
+# Note: the -E is used to ensure the LaTeX gets a clean build. Sometimes the 
+# HTML builds leave a dirty environment behind that cause the LaTeX builder to fail.
 # TODO: reduce the amount of output from this command.
 pdf: _convert_svg
-	@$(SPHINXBUILD) -M latexpdf "$(SOURCEDIR)" "$(BUILDDIR)"
+	@$(SPHINXBUILD) -M latexpdf "$(SOURCEDIR)" "$(BUILDDIR)" -E
 
 
 _convert_svg: 
