@@ -13,6 +13,8 @@ stories are written from the perspective of the users roles described in
 This section contains the user stories identified for this project.
 
 
+.. _ref-game-state-management-story:
+
 =====================
 Game State Management
 =====================
@@ -59,6 +61,8 @@ Stable Library API
   library's API changes.
 
 
+.. _ref-ai-player-story:
+
 =========
 AI Player
 =========
@@ -71,6 +75,8 @@ AI Player
 * The library provides an AI player that Rust application developers can
   incorporate into their applications.
 
+
+.. _ref-ai-difficulty-settings-story:
 
 ======================
 AI Difficulty Settings
@@ -88,6 +94,8 @@ AI Difficulty Settings
 The difficulty can be thought of as a probability of how likely the AI will make
 a mistake.
 
+
+.. _ref-players-take-turns-having-first-move-story:
 
 ========================================
 Players Take Turns Having the First Move
