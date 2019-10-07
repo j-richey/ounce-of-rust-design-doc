@@ -12,3 +12,18 @@ Artificial Intelligence Algorithms
       randomly not looking at a path. The probability of not going down a path
       is based on the difficulty setting.
 
+
+..  code-block:: python
+    :caption: searching the tree
+
+    def ai_move(game, player_turn):
+        if game.state.is_game_over():
+            return game.state
+
+        for square in game.board.free_squares():
+            square.set_owner(player_turn)
+            # TODO: switch who's turn it is
+            # TODO: clone the game or the board.
+            result = ai_move(game, player_turn)
+            square.set_result(square)
+
