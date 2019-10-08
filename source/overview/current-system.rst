@@ -12,9 +12,6 @@ An example of a Tic Tac Toe game is shown in :numref:`fig-tic-tac-toe-example-ga
     :alt: An example Tic Tac Toe game
 
     An example game of Tic Tac Toe where player X is victorious.
-    Image from `wikimedia.org <https://commons.wikimedia.org/wiki/File:Tic-tac-toe-game-1.svg>`__
-    by user Stannered released under `CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/deed.en>`__.
-
 
 ================
 Pencil and Paper
