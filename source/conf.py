@@ -42,7 +42,14 @@ exclude_patterns = []
 
 nitpicky = True
 
+# Number figures, tables, and code listings.
 numfig = True
+numfig_format = {
+    'figure': "Figure %s",
+    'table': "Table %s",
+    'code-block': "Listing %s",
+    'section': "Section",
+}
 
 
 # -- Options for HTML output -------------------------------------------------

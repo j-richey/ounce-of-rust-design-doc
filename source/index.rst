@@ -4,6 +4,7 @@ Ounce of Rust Project Design Document
 
 ..  toctree::
     :maxdepth: 2
+    :numbered:
     :caption: Contents:
 
     introduction

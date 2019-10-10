@@ -14,3 +14,5 @@
 
 ..  [Rust-API-Guidelines] *Rust API Guidelines* retrieved from https://rust-lang-nursery.github.io/api-guidelines/
     (`source on GitHub <https://github.com/rust-lang-nursery/api-guidelines>`__)
+
+..  [Buckland-2004] Mat Buckland (2004) *Programming Game AI by Example*

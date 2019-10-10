@@ -69,3 +69,4 @@ Example Code
 
 ..  [#FunAI] One of the challenges of creating AI for video games is the AI needs
         to be fun. An AI that picked the same square every time would not be fun!
+        See [Buckland-2004]_ for a discussion on making game AI fun.

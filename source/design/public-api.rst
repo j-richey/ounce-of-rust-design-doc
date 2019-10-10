@@ -1,12 +1,6 @@
 ##########
 Public API
 ##########
-
-..  TODO: describe the public API here
-    Include public structures, modules, traits, etc
-    Include an example of how these could be used for a simple TTT game
-    Add a Position struct!
-
 This section describes the public API of the library. The provided types and
 functions are used by other applications to create Tic Tac Toe games. The legend
 shown in :numref:`uml-public-api-diagram-legend` is used for the type diagrams
@@ -213,6 +207,9 @@ get_mut()
     Gets a mutable square at the indicated row and column. Panics under the same
     situations as get().
 
+..  TODO:
+    Something to return an iterator of free squares and an iterator of all possible
+    winning positions.
 
 ..  rubric:: Trait Implementations
 
@@ -328,3 +325,11 @@ position()
 
 * :ref:`ref-ai-player-story`
 * :ref:`ref-ai-difficulty-settings-story`
+
+
+=================
+Example API Usage
+=================
+
+.. TODO: A quick example of using the API
+
