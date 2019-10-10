@@ -12,7 +12,7 @@ The following applications are required to build this documentation:
 * inkscape
 * plantuml
 * A LaTeX toolchain
-* [Sphinx](https://www.sphinx-doc.org/en/master/)
+* Sphinx
 
 On Ununtu / Debian system the required packages can be installed and 
 documentation built with: 

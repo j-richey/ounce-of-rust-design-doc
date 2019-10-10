@@ -7,7 +7,7 @@ BUILDDIR      = build
 PDFOUTPUT	  = $(wildcard $(BUILDDIR)/latex/*project*design*document*.pdf)
 
 
-.PHONY: all html singlehtml pdf _convert_svg clean help
+.PHONY: all html singlehtml pdf _convert_svg linkcheck clean help
 
 
 # All simply builds all the various outputs then ensures a copy of the PDF and
@@ -41,6 +41,10 @@ _convert_svg:
 	@python3 convert-svg-to-pdf.py "$(SOURCEDIR)"
 
 
+linkcheck:
+	@$(SPHINXBUILD) -M linkcheck "$(SOURCEDIR)" "$(BUILDDIR)"
+
+
 clean:
 	@$(SPHINXBUILD) -M clean "$(SOURCEDIR)" "$(BUILDDIR)"
 
@@ -53,6 +57,7 @@ help:
 	@echo "  html        Builds standalone HTML files for the documentation."
 	@echo "  singlehtml  Builds a single HTML file of the documentation."
 	@echo "  pdf         Builds a PDF of the documentation."
+	@echo "  linkcheck   Checks for broken external links."
 	@echo "  clean       Cleans the output directory."
 	@echo "  help        Shows this help message."
 	@echo ""
