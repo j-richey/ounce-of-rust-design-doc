@@ -29,37 +29,43 @@ in this section.
     show Enum fields
 
 
-An overview of the public types is shown in :numref:`uml-public-api-overview`.
+An overview of the major public types is shown in :numref:`uml-public-api-overview`.
 
 ..  _uml-public-api-overview:
 ..  uml::
-    :caption: Public modules, structures, and other types.
+    :caption: Major public modules, structures, and other types. Note: the
+        module contains additional supporting types.
 
     hide members
 
     package tic_tac_toe {
-        class Game
+        enum Owner
         enum GameState
-        class Board
-        class Square
-        class Position
-        enum SquareOwner
-        class AIMove
+
+        Game o-- Board
+        Game o- GameState
+
+        Board "1" *-- "n" Square
+        Square o- Owner
+        AIMove .> Game
     }
 
-The library contains a single public module that holds the public types.
+The library contains a single public module that holds the public types. Each of
+the major and supporting types are described below.
 
 
-===========
-Struct Game
-===========
-The Game structure is one of the central types provided by the crate. It contains
-the state machine logic and the underlying game board. :numref:`uml-struct-game`
-show the Game structure.
+===============
+Game Management
+===============
+Game management is handled by the Game structure. This structure is one of the
+central types provided by the crate. It contains the state machine logic and
+holds the underlying game board.
+:numref:`uml-game-management` shows the Game structure along with the GameState
+enumeration.
 
-..  _uml-struct-game:
+..  _uml-game-management:
 ..  uml::
-    :caption: The Game structure.
+    :caption: The Game structure and GameState enumeration.
 
     hide empty fields
 
@@ -72,9 +78,18 @@ show the Game structure.
         +start_next_game()
     }
 
-The Game structure uses a state machine to determine which player has the next
-move or when the game is over. The state diagram is shown in
-:numref:`uml-game-state-diagram`.
+    enum GameState {
+        PlayerXMove
+        PlayerOMove
+        PlayerXWin
+        PlayerOWin
+        CatsGame
+
+        +is_game_over() -> bool
+    }
+
+A state machine to determine which player has the next move or when the game
+is over. The state diagram is shown in :numref:`uml-game-state-diagram`.
 
 ..  _uml-game-state-diagram:
 ..  uml::
@@ -93,13 +108,15 @@ move or when the game is over. The state diagram is shown in
     PlayerOMove --> PlayerOWin
     PlayerOMove --> CatsGame
 
-When a new Game starts either player X or player O takes the first turn.
+When a new game starts either player X or player O takes the first turn.
 The players alternate making their moves until one of the end game conditions is
 encountered. The player that did not have the first turn last game takes the
 first turn next game.
 
-
-..  rubric:: Member Details
+-----------
+Struct Game
+-----------
+Members of the Game structure are as follows:
 
 new()
     Creates a new Tic Tac Toe game.
@@ -118,7 +135,7 @@ can_move()
 do_move()
     Marks the indicated square as being owned by the current player. The state
     of the game is updated as a side effect of ``do_move()``.
-    Panics if the indicated position is already owned if the game is over.
+    Panics if the indicated position is already owned or if the game is over.
 
 start_next_game()
     Starts the next game by resetting the state machine ensuring the player who
@@ -127,10 +144,8 @@ start_next_game()
 
 ..  rubric:: Trait Implementations
 
-* Debug
-* Clone (or Copy?)
+* Clone [#clonecopy]_
 
-..  TODO: which one does game implement?
 
 ..  rubric:: Related Requirements
 
@@ -139,31 +154,27 @@ start_next_game()
 * :ref:`ref-players-take-turns-having-first-move-story`
 
 
-==============
-Enum Game Sate
-==============
+-------------
+Enum GameSate
+-------------
 The game state enumeration contains a variant for each possible game state
-described in :numref:`uml-game-state-diagram`. The :numref:`uml-enum-game-sate`
-shows the game state enumeration.
+described in :numref:`uml-game-state-diagram` along with some additional helper
+methods.
 
-..  _uml-enum-game-sate:
-..  uml::
-    :caption: Game State enum
+PlayerXMove
+    Player X's turn to mark an empty square.
 
-    hide empty methods
+PlayerOMove
+    Player O's turn to mark an empty square.
 
-    enum GameState {
-        PlayerXMove
-        PlayerOMove
-        PlayerXWin
-        PlayerOWin
-        CatsGame
+PlayerXWin
+    Player X has won the game.
 
-        +is_game_over() -> bool
-    }
+PlayerOWin
+    Player O has won the game.
 
-
-..  rubric:: Member Details
+CatsGame
+    The game has ended in a draw where there are no winners.
 
 is_game_over()
     Indicates if the state represents one of the game over states. That is,
@@ -171,129 +182,193 @@ is_game_over()
     false is returned.
 
 
-============
-Struct Board
-============
-The board structure models a Tic Tac Toe game board. The structure members are
-shown in :numref:`uml-struct-board`.
+..  rubric:: Trait Implementations
+
+* Copy
+* Eq
+* Debug
+
+
+==========
+Board Data
+==========
+The board structure models a Tic Tac Toe game board. It holds the individual
+squares of the board and provides functions to access and iterate over the
+squares. [#iterators]_ The board and square structures along with supporting
+types are shown in :numref:`uml-struct-board`.
+
 
 ..  _uml-struct-board:
 ..  uml::
-    :caption: The Board structure.
+    :caption: The Board structure and supporting types.
 
     hide empty fields
-
-    class Board {
-        +new(size)
-        +size() -> i32
-        +get(row, column) -> Square
-        +get_mut(row, column) -> Square
-    }
-
-..  rubric:: Member Details
-
-new()
-    Constructs a new board of the given size. Boards are always square, the size
-    indicates the number of rows and columns the board has.
-
-size()
-    Gets the size of board, that is the number of rows and columns.
-
-get()
-    Gets the square at the indicated row and column. Panics if requested row or
-    column is outside the size of the board.
-
-get_mut()
-    Gets a mutable square at the indicated row and column. Panics under the same
-    situations as get().
-
-..  TODO:
-    Something to return an iterator of free squares and an iterator of all possible
-    winning positions.
-
-..  rubric:: Trait Implementations
-
-* Display
-* Clone (or Copy?)
-
-
-=============
-Struct Square
-=============
-Represents an individual square of the game board. The members are shown in
-:numref:`uml-struct-square`.
-
-..  _uml-struct-square:
-..  uml::
-    :caption: The Square structure.
-
-    hide empty fields
-
-    class Square {
-        +new()
-        +owner() -> SquareOwner
-        +set_owner(owner: SquareOwner)
-    }
-
-.. TODO: Does this even need methods?
-
-..  rubric:: Member Details
-
-new()
-    Maybe?
-
-owner()
-    Gets the owner of the square.
-
-set_owner()
-    Sets the owner of the square.
-
-
-..  rubric:: Trait Implementations
-
-* Debug
-* Clone (or Copy?)
-
-
-=================
-Enum Square Owner
-=================
-
-..  uml::
-    :caption: Enumeration for indicating a square's owner.
-
     hide empty methods
 
-    enum SquareOwner {
+    class Board {
+        +new()
+        +size() -> i32
+        +get(position) -> Square
+        +get_mut(position) -> Square
+        +iter() -> Iter
+        +free_squares() -> FreeSquares
+        +victory_sets() -> VictorySets
+    }
+
+    interface std::iter::Iterator {
+        +Item: type
+        +next() -> Option<Item>
+    }
+
+    class Iter {
+        +Item: Square
+    }
+    std::iter::Iterator <|-- Iter
+
+    class FreeSquares {
+        +Item: Square
+    }
+    std::iter::Iterator <|-- FreeSquares
+
+    class VictorySets {
+        +Item: slice<Square>
+    }
+    std::iter::Iterator <|-- VictorySets
+
+    class Square {
+        +position: Position
+        +owner: Owner
+    }
+
+    class Position {
+        +row: i32
+        +column: i32
+    }
+
+    enum Owner {
         PlayerX
         PlayerO
         None
     }
 
+    ' Hidden links are used to help with the diagram's layout.
+    Board -[hidden] std::iter::Iterator
+    VictorySets -[hidden]- Owner
+    Square -[hidden] Position
+    Position -[hidden] Owner
 
-===============
+------------
+Struct Board
+------------
+Data structure representing the Tic Tac Toe board. Provides multiple ways to
+access individual squares.
+
+new()
+    Constructs a new board.
+
+size()
+    Gets the size of board, that is the number of rows and columns.
+    Note: boards are always square.
+
+get()
+    Gets the square at the indicated position. Panics if requested position is
+    outside the size of the board.
+
+get_mut()
+    Gets a mutable square at the indicated position. Panics under the same
+    situations as get().
+
+iter()
+    Gets an iterator that iterates over all the squares in the board.
+
+free_squares()
+    Gets an iterator that iterates the squares in the board that do not have an
+    owner.
+
+victory_sets()
+    Gets an iterator that iterates over all the sets of squares that, if all
+    owned by a player, would make the player victorious. E.g. this gets all the
+    rows, columns, and both diagonals as slices.
+
+
+..  rubric:: Trait Implementations
+
+* Display
+* Clone
+
+-------------
+Struct Square
+-------------
+Represents an individual square of the game board.
+
+position
+    The position the square is located at on the board. This is
+
+owner
+    The owner of the square.
+
+
+..  rubric:: Trait Implementations
+
+* Debug
+* Clone
+* Copy
+
+
+---------------
 Struct Position
-===============
+---------------
 The position structure represents a specific board position denoted by row and
-column. :numref:`uml-struct-position` shows this structure.
+column.
 
-..  _uml-struct-position:
-..  uml::
-    :caption: The Position structure.
+row
+    The row associated with the position.
 
-    hide empty methods
-
-    class Position {
-        +row
-        +column
-    }
-
-..  TODO: debug, clone, and make it copyable.
+column
+    The column associated with the position.
 
 
-==============
-Struct AI Move
-==============
+..  rubric:: Trait Implementations
+
+* Debug
+* Copy
+* Clone
+* From<(i32, i32)>
+* Eq
+
+
+----------
+Enum Owner
+----------
+The owner enumeration indicates which player owns a square, if any.
+
+PlayerX
+    Player X owns the square.
+
+PlayerO
+    Player O owns the square.
+
+None
+    No player owns the square.
+
+
+..  rubric:: Trait Implementations
+
+* Debug
+* Copy
+* Eq
+
+
+----------------------
+Iterating Over Squares
+----------------------
+
+.. TODO: provide some description of the iterators.
+
+
+========
+AI Moves
+========
 The AI move structure represents a move by an AI player. The AI move structure is
 shown in :numref:`uml-struct-ai-move`.
 
@@ -321,6 +396,12 @@ position()
     Gets the position selected by the AI player based on the previously provided
     game.
 
+
+..  rubric:: Trait Implementations
+
+* Debug
+
+
 ..  rubric:: Related Requirements
 
 * :ref:`ref-ai-player-story`
@@ -333,3 +414,16 @@ Example API Usage
 
 .. TODO: A quick example of using the API
 
+
+..  rubric:: Footnotes
+
+..  [#clonecopy] Rust's clone and copy traits both serve to duplicate an object but
+        each goes about duplication in a different manner. Copy performs an operation
+        similar to `memcpy` where it just copies the bits of the object. Alternately,
+        Clone explicitly duplicates the object giving the programmer control over
+        what parts are cloned. For details see the discussion in
+        `Trait std::clone::Clone <https://doc.rust-lang.org/std/clone/trait.Clone.html>`_.
+
+..  [#iterators] Rust's standard library documentation states "Iterators are
+        heavily used in idiomatic Rust code, so it's worth becoming familiar
+        with them." For details see [Rust-Crate-std]_.
