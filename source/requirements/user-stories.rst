@@ -48,6 +48,8 @@ Know Cells that Contributed to Player's Victory
   contributed to the victory.
 
 
+.. _ref-stable-library-api-story:
+
 ==================
 Stable Library API
 ==================
@@ -58,7 +60,7 @@ Stable Library API
 .. rubric:: Acceptance Criteria
 
 * The library uses semantic versioning to clearly communicate when there are API
-  changes.
+  changes. [#semver]_
 * There are integration tests that help library developers detect if the
   library's API changes.
 
@@ -142,6 +144,8 @@ the Rust application developer to see if this library meets their needs is
 sufficient to fulfill this requirement.
 
 
+.. _ref-getting-started-example-story:
+
 =======================
 Getting Started Example
 =======================
@@ -154,6 +158,8 @@ Getting Started Example
 * There is a runnable example of using the library.
 * The example is in a prominent location such as library's documentation.
 
+
+.. _ref-detailed-library-documentation-story:
 
 ==============================
 Detailed Library Documentation
@@ -192,6 +198,8 @@ This can be a subjective subject subject. However, providing an idiomatic Rust
 API is important to fulfilling the :ref:`ref-learn-about-rust-objective` objective.
 
 
+.. _ref-cross-platform-support-story:
+
 ======================
 Cross Platform Support
 ======================
@@ -210,6 +218,8 @@ The use of platform specific code is minimized, however, the number of platforms
 the library is tested on may be limited due to resource constraints.
 
 
+.. _ref-available-on-crates-io-story:
+
 ======================
 Available on crates.io
 ======================
@@ -223,6 +233,8 @@ Available on crates.io
 * The library can be obtained by simply specifying it as a dependency in Cargo.toml.
 
 
+.. _ref-source-available-on-github-story:
+
 ==========================
 Source Available on GitHub
 ==========================
@@ -235,6 +247,8 @@ Source Available on GitHub
 * The library's source code is hosted on a public GitHub repository.
 * The library's tags match the releases on crates.io.
 
+
+.. _ref-permissive-license-story:
 
 ==================
 Permissive License
@@ -251,6 +265,8 @@ Permissive License
 
 
 ..  rubric:: Footnotes
+
+..  [#semver] See https://semver.org/ for details on semantic versioning.
 
 ..  [#WiningMoves] The player with the first move has about double the number of
         winning possibilities. For details see
