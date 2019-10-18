@@ -32,4 +32,10 @@ of bugs, and focus on correctness has made Rust an increasingly popular language
 
 Even though Rust is unlikely to replace C and C++ any time soon, Rust's
 concepts, such as traits, error handling, and memory management systems are
-worth learning to help expand ones general programming knowledge.
+worth learning to help expand ones general programming knowledge. [#rustdocs]_
+
+
+..  rubric:: Footnotes
+
+..  [#rustdocs] The Rust official documentation is likely to be helpful for
+        meeting this objective. For details see [Rust-Docs]_.
