@@ -33,6 +33,8 @@ Game State Management
 The design details of the APIs are outside the scope of this requirements chapter.
 
 
+.. _ref-know-victory-squares-story:
+
 ===============================================
 Know Cells that Contributed to Player's Victory
 ===============================================
@@ -114,6 +116,8 @@ The player who takes the first move has more wining possibilities than the
 second player. [#WiningMoves]_
 
 
+.. _ref-maximum-ai-update-time-story:
+
 ======================
 Maximum AI Update Time
 ======================
@@ -166,6 +170,8 @@ Detailed Library Documentation
 * The documentation is accessible from the internet, such as being hosted on
   `Docs.rs <https://docs.rs>`__.
 
+
+.. _ref-idiomatic-rust-apis-story:
 
 ===================
 Idiomatic Rust APIs

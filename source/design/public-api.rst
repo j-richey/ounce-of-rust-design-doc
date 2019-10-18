@@ -50,9 +50,12 @@ An overview of the major public types is shown in :numref:`uml-public-api-overvi
         AIMove .> Game
     }
 
-The library contains a single public module that holds the public types. Each of
-the major and supporting types are described below.
+The library contains a single public module that holds the public types. The
+naming conventions used in this library follow those described in the Rust API
+Guidelines [#RustAPIGuidelines]_ per the :ref:`ref-idiomatic-rust-apis-story`
+user story.
 
+Each of the major and supporting types are described below.
 
 ===============
 Game Management
@@ -81,8 +84,8 @@ enumeration.
     enum GameState {
         PlayerXMove
         PlayerOMove
-        PlayerXWin
-        PlayerOWin
+        PlayerXWin[VictorySets]
+        PlayerOWin[VictorySets]
         CatsGame
 
         +is_game_over() -> bool
@@ -167,11 +170,13 @@ PlayerXMove
 PlayerOMove
     Player O's turn to mark an empty square.
 
-PlayerXWin
-    Player X has won the game.
+PlayerXWin[VictorySets]
+    Player X has won the game. The victory sets that contributed to the win are
+    provided as the enum value.
 
-PlayerOWin
-    Player O has won the game.
+PlayerOWin[VictorySets]
+    Player O has won the game. The victory sets that contributed to the win are
+    provided as the enum value.
 
 CatsGame
     The game has ended in a draw where there are no winners.
@@ -189,13 +194,18 @@ is_game_over()
 * Debug
 
 
+..  rubric:: Related Requirements
+
+* :ref:`ref-know-victory-squares-story`
+
+
 ==========
 Board Data
 ==========
 The board structure models a Tic Tac Toe game board. It holds the individual
 squares of the board and provides functions to access and iterate over the
-squares. [#iterators]_ The board and square structures along with supporting
-types are shown in :numref:`uml-struct-board`.
+squares. The board and square structures along with supporting types are shown
+in :numref:`uml-struct-board`.
 
 
 ..  _uml-struct-board:
@@ -290,11 +300,29 @@ victory_sets()
     owned by a player, would make the player victorious. E.g. this gets all the
     rows, columns, and both diagonals as slices.
 
+The board structure also implements the Display trait. This provides a formatted
+output of the board and is suitable for use in simple console applications or
+debugging purposes. An example of the boards display is shown in
+:numref:`code-example-board-display`.
+
+..  _code-example-board-display:
+..  code-block:: text
+    :caption: Example board display output.
+
+    +---+---+---+
+    | X | O | O |
+    +---+---+---+
+    | O | X |   |
+    +---+---+---+
+    | X |   | X |
+    +---+---+---+
+
 
 ..  rubric:: Trait Implementations
 
 * Display
 * Clone
+
 
 -------------
 Struct Square
@@ -302,7 +330,7 @@ Struct Square
 Represents an individual square of the game board.
 
 position
-    The position the square is located at on the board. This is
+    The position the square is located at on the board.
 
 owner
     The owner of the square.
@@ -313,7 +341,7 @@ owner
 * Debug
 * Clone
 * Copy
-
+* Eq
 
 ---------------
 Struct Position
@@ -335,6 +363,7 @@ column
 * Clone
 * From<(i32, i32)>
 * Eq
+* Hash
 
 
 ----------
@@ -356,14 +385,25 @@ None
 
 * Debug
 * Copy
+* Clone
 * Eq
 
 
 ----------------------
 Iterating Over Squares
 ----------------------
+The board structure provides several ways to iterate over board's squares. [#iterators]_
+Helper types that implement the Iterator trait are used to provide this support.
 
-.. TODO: provide some description of the iterators.
+Iter
+    Iterates over all the squares in the board.
+
+FreeSquares
+    Iterates over squares that do not have an owner.
+
+VictorySets
+    Iterates over all the sets of squares that, if all owned by a player, would
+    make the player victorious.
 
 
 ========
@@ -408,14 +448,10 @@ position()
 * :ref:`ref-ai-difficulty-settings-story`
 
 
-=================
-Example API Usage
-=================
-
-.. TODO: A quick example of using the API
-
 
 ..  rubric:: Footnotes
+
+..  [#RustAPIGuidelines] See the [Rust-API-Guidelines]_ for details.
 
 ..  [#clonecopy] Rust's clone and copy traits both serve to duplicate an object but
         each goes about duplication in a different manner. Copy performs an operation

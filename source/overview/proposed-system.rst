@@ -50,9 +50,7 @@ The project deliverables are:
 
 ..  rubric:: Footnotes
 
-..  [#A] The naming conventions for crates is described in the
-         `Rust Style Guidelines <https://doc.rust-lang.org/1.0.0/style/style/naming/README.html>`__.
-         Future projects built around ``open_ttt_lib`` may use ``open_ttt`` as
+..  [#A] Future projects built around ``open_ttt_lib`` may use ``open_ttt`` as
          part of their crate name.
 
 ..  [#B] Popular places to host Rust API documentation include `<https://docs.rs/>`__
