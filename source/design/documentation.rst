@@ -14,10 +14,15 @@ documentation comments. [#usefuldocs]_ Each public item provided by the crate
 has corresponding documentation that describes why the item should be used.
 
 Common sections include **examples**, **panics**, and **errors**. In particular,
-Rust encourages every public type to have a corresponding example. Additionally
-examples are exercised as part of the library's tests which help developers detect
-if a public API has changed.
+Rust encourages every public type to have a corresponding example. The example
+for the crate's top level module shows a getting started example that is a simple
+yet complete Tic Tac Toe game that uses the APIs provided by the library.
+Additionally, the example code is exercised as part of the library's tests which
+help developers detect if a public API has changed.
 
+The ``deny(missing_docs)`` attribute is added to ``lib.rs`` to ensure all public
+items are documented. Any public item that is not documented causes a compile
+time error.
 
 ..  rubric:: Related Requirements
 
@@ -47,6 +52,11 @@ The crate's ``Cargo.toml`` uses the default ``documentation`` value which means
 when the crate is uploaded to crates.io, https://docs.rs automatically builds
 and hosts the crate's documentation.
 
+The library's source code repository ``README.md`` file contains a link to this
+documentation so developers can review the documentation without needing to
+download and build the documentation themselves.
+
+
 ..  rubric:: Related Requirements
 
 * :ref:`ref-detailed-library-documentation-story`
@@ -60,7 +70,7 @@ and hosts the crate's documentation.
     is a `Documentation <https://rust-lang-nursery.github.io/api-guidelines/documentation.html>`_
     section in the [Rust-API-Guidelines]_.
 
-..  [#changelog] See https://keepachangelog.com/ for the format of the `CHANGELOG.md`
+..  [#changelog] See https://keepachangelog.com/ for the format of the ``CHANGELOG.md``
         file and additional details / motivation for keeping a change log.
 
 ..  [#rfc1105] `Rust RFC 1105 API Evolution <https://github.com/rust-lang/rfcs/blob/master/text/1105-api-evolution.md>`_

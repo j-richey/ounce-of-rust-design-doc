@@ -34,4 +34,6 @@ Glossary
 
 ..  TODO: terms to define:
     Tic Tac Toe?
+    crates.io
+    docs.rs
 

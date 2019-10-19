@@ -1,11 +1,12 @@
 ############
 Benchmarking
 ############
-The :ref:`ref-maximum-ai-update-time-story` user story requires there be a benchmark
-for the AI update time. Luckily cargo makes this as easy as running `cargo bench`. [#rustbenchmark]_
-
-:numref:`code-ai-move-benchmark` shows an example of benchmarking the worst case
-AI move.
+The library provides a benchmark of the worst case AI update time allowing
+users of the library to evaluate if the library fits in with their performance
+goals. Cargo contains built in benchmark support: any tests that have the
+``bench`` attribute are exercised by running ``cargo bench``. [#rustbenchmark]_
+:numref:`code-ai-move-benchmark` shows an example of benchmarking the worst
+case AI move.
 
 ..  _code-ai-move-benchmark:
 ..  code-block:: rust
@@ -14,12 +15,18 @@ AI move.
     #[bench]
     fn worst_case_ai_move_benchmark(b: &mut Bencher) {
         let game = Game::new();
-        b.iter(|| AIMove::new(game, 0.0));
+        let mistake_probability = 0.0;
+        b.iter(|| AIMove::new(game, mistake_probability));
     }
 
 The worst case is time is for a new game and a zero percent mistake probability.
 Under these situations the :doc:`ai-algorithms` have to evaluate the entire
 problem space.
+
+
+..  rubric:: Related Requirements
+
+* :ref:`ref-maximum-ai-update-time-story`
 
 
 ..  rubric:: Footnotes

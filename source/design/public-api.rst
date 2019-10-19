@@ -455,7 +455,7 @@ position()
 
 ..  [#clonecopy] Rust's clone and copy traits both serve to duplicate an object but
         each goes about duplication in a different manner. Copy performs an operation
-        similar to `memcpy` where it just copies the bits of the object. Alternately,
+        similar to ``memcpy`` where it just copies the bits of the object. Alternately,
         Clone explicitly duplicates the object giving the programmer control over
         what parts are cloned. For details see the discussion in
         `Trait std::clone::Clone <https://doc.rust-lang.org/std/clone/trait.Clone.html>`_.
