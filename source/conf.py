@@ -1,12 +1,10 @@
 # Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
+# For list of Sphinx options see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # -- Project information -----------------------------------------------------
 
-project = 'Ounce of Rust Project Design Document'
+project = 'Ounce of Rust Project Manual'
 copyright = '2019, James Richey'
 author = 'James Richey'
 
@@ -68,7 +66,7 @@ html_theme_options = {
     'extra_nav_links': {
         "Download PDF": _pdf_base_name + ".pdf",
         "View Single Page": "singlepage.html",
-        "GitHub Source": "https://github.com/j-richey/ounce-of-rust-design-doc",
+        "GitHub Source": "https://github.com/j-richey/ounce-of-rust-manual",
     },
 }
 

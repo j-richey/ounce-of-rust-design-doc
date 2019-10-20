@@ -6,12 +6,14 @@ Introduction
 ========================
 Purpose of this Document
 ========================
-This is the design document for the Ounce of Rust project. This document
-describes in detail the objectives requirements, and design considerations of
-the project providing a central location for this information. This is
-invaluable for planning the project's tasks and milestones. Anyone wishing to
-understand the project and resulting deliverables is encouraged to read this
-document.
+This is the Ounce of Rust project manual. This document describes in detail the
+objectives, requirements, and design considerations of the project providing a
+central location for this information. This is invaluable for understanding the
+project's scope, planning the project's milestones, and creating the project's
+deliverables.
+
+Anyone who is involved with this project is encouraged to read this manual and
+keep a copy handy while they are working on the project.
 
 
 ====================
@@ -30,7 +32,7 @@ Overview of this Document
 There are three main parts to this document. [#A]_ The :doc:`overview/index`
 chapter provides a general overview of the problems this project is intended to
 address and how the project addresses these problems. The :doc:`requirements/index`
-chapter specifies the requirements of the project. The :doc:`design/index`
+chapter specifies the requirements of the project. The :doc:`design/index` chapter
 describes how the project's deliverables are designed to fulfill the requirements.
 
 Additionally, the :doc:`glossary` defines terms that are used throughout this

@@ -1,6 +1,6 @@
-#####################################
-Ounce of Rust Project Design Document
-#####################################
+############################
+Ounce of Rust Project Manual
+############################
 
 ..  toctree::
     :maxdepth: 2

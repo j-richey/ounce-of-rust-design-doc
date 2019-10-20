@@ -1,8 +1,11 @@
-# Ounce of Rust Project Design Document
-This repository contains the design document for the Ounce of Rust project. This
-document describes the objectives of the Ounce of Rust project is details how
-the objectives are achieved.
+# Ounce of Rust Project Manual
+This repository contains the Ounce of Rust project manual. This document
+describes in detail the objectives requirements, and design considerations of t
+he project. Anyone who is involved with this project is encouraged to read this
+manual and keep a copy handy while they are working on the project.
 
+The latest version is hosted here: 
+[Ounce of Rust Project Manual](https://j-richey.github.io/project-documentation/ounce-of-rust/)
 
 ## Building
 This documentation is rendered using [Sphinx](https://www.sphinx-doc.org/en/master/).
@@ -19,8 +22,8 @@ documentation built with:
 
 ```
 $ sudo apt install texlive-full inkscape plantuml
-$ python3 -m venv ounce-of-rust-docs-venv
-$ source ounce-of-rust-docs-venv/bin/activate
+$ python3 -m venv pyvenv
+$ source pyvenv/bin/activate
 $ pip install -r requirements.txt
 $ make
 ``` 

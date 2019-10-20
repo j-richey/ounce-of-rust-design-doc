@@ -4,7 +4,7 @@
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
-PDFOUTPUT	  = $(wildcard $(BUILDDIR)/latex/*project*design*document*.pdf)
+PDFOUTPUT	  = $(wildcard $(BUILDDIR)/latex/*project*manual*.pdf)
 
 
 .PHONY: all html singlehtml pdf _convert_svg linkcheck clean help
