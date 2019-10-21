@@ -1,3 +1,5 @@
+.. index:: Travis CI, travis.yml
+
 ######################
 Continuous Integration
 ######################

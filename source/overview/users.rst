@@ -4,6 +4,9 @@ User Roles and Responsibilities
 
 This section describes the users of the Tic Tac Toe library.
 
+
+.. index:: Rust application developer
+
 ==========================
 Rust Application Developer
 ==========================
@@ -17,11 +20,13 @@ games.
 * Debug the application when it does not run as expected.
 
 
+.. index:: player
+
 ==================
 Tic Tac Toe Player
 ==================
 The Tic Tac Toe player is an indirect user of the library. They use the
-application created by the application developer to play an exciting game of
+application created by the Rust application developer to play an exciting game of
 Tic Tac Toe.
 
 .. rubric:: Responsibilities

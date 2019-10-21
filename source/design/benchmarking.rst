@@ -1,6 +1,7 @@
 ############
 Benchmarking
 ############
+
 The library provides a benchmark of the worst case AI update time allowing
 users of the library to evaluate if the library fits in with their performance
 goals. Cargo contains built in benchmark support: any tests that have the
@@ -22,6 +23,9 @@ case AI move.
 The worst case is time is for a new game and a zero percent mistake probability.
 Under these situations the :doc:`ai-algorithms` have to evaluate the entire
 problem space.
+
+The library's source code repository ``README.md`` file contains instructions on
+how to run the benchmarks.
 
 
 ..  rubric:: Related Requirements

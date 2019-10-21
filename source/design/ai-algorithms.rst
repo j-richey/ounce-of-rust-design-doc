@@ -1,7 +1,9 @@
+.. index:: depth first search, AI player
+
 ##################################
 Artificial Intelligence Algorithms
 ##################################
-The AI algorithms are responsible for picking a position to place the AI player's mark. [#AIName]_
+The AI algorithms are responsible for picking a square to place the AI player's mark. [#AIName]_
 It does this by doing a depth first search for all possible game outcomes based
 on the current state of the game board. An example is shown in
 :numref:`fig-ai-depth-first-search-example`.
@@ -91,7 +93,7 @@ The ``evaluate_position()`` function is responsible for evaluate a specific posi
             return Outcome.Unknown
 
         # Clone the game so this function can try out the move without
-        # messing with the original game.
+        # modifying the original game.
         game = game.clone()
         game.do_move(square.position)
 

@@ -2,10 +2,22 @@
 Ounce of Rust Project Manual
 ############################
 
+..  only:: builder_html and (not singlehtml)
+
+    Welcome to the manual for the Ounce of Rust project for the creation of a
+    Tic Tac Toe Rust library.
+
+    This manual is also available in other formats:
+
+    * |pdf_download|
+    * `View as single page <singlepage.html>`__
+
+    Contents:
+
+
 ..  toctree::
     :maxdepth: 2
     :numbered:
-    :caption: Contents:
 
     introduction
     overview/index
@@ -21,8 +33,3 @@ Ounce of Rust Project Manual
 
     * :ref:`genindex`
     * :ref:`search`
-
-    Other Formats:
-
-    * |pdf_download|
-    * `View as single page <singlepage.html>`__

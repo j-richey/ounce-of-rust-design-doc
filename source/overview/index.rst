@@ -2,9 +2,12 @@
 Overview
 ########
 
+The overview chapter provides a high level summary of the project.
+
+
 ..  toctree::
     :maxdepth: 1
-    :caption: Contents:
+    :caption: Overview Topics:
 
     objectives
     current-system

@@ -16,5 +16,5 @@ line applications, or even as a mini-game in a larger video game. The diagram in
     [TTT Mini Game] --> [open_ttt_lib]
 
 The other applications link directly to ``open_ttt_lib``. The library does not
-provide any ways of remote access, e.g. via a network interface and it does not
+provide any ways of remote access, e.g. via a network interface, and it does not
 save any state the computer's persistent storage.

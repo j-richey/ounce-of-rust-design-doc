@@ -9,7 +9,7 @@ the library is used.
 
 ..  toctree::
     :maxdepth: 1
-    :caption: Contents:
+    :caption: Requirements Topics:
 
     ttt-rules
     user-stories

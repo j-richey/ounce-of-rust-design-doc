@@ -4,7 +4,7 @@ User Stories
 
 ..  Note: there is a user story template at the bottom of this file.
 
-User stories are informal descriptions of the software system features. These
+User stories are informal descriptions of the software's features. These
 stories are written from the perspective of the users roles described in
 :doc:`../overview/users`. The general format is:
 
@@ -35,19 +35,20 @@ The design details of the APIs are outside the scope of this requirements chapte
 
 .. _ref-know-victory-squares-story:
 
-===============================================
-Know Cells that Contributed to Player's Victory
-===============================================
+=================================================
+Know Squares that Contributed to Player's Victory
+=================================================
 | As a Rust application developer,
-| I want to know what cells contributed to the player's victory,
+| I want to know what squares contributed to the player's victory,
 | so I can draw a line through them or mark them in a special color.
 
 .. rubric:: Acceptance Criteria
 
-* When a player has won the game there is a way to obtain the board's cells that
-  contributed to the victory.
+* When a player has won the game there is a way to obtain the board's squares
+  that contributed to the victory.
 
 
+.. index:: semantic versioning
 .. _ref-stable-library-api-story:
 
 ==================
@@ -65,6 +66,7 @@ Stable Library API
   library's API changes.
 
 
+.. index:: AI player
 .. _ref-ai-player-story:
 
 =========
@@ -124,13 +126,13 @@ second player. [#WiningMoves]_
 Maximum AI Update Time
 ======================
 | As a Rust application developer,
-| I want the AI to block for less than one frame when picking its next move,
+| I want the AI to block for less than one frame when picking a square,
 | so it does not block my rendering thread making my animations choppy.
 
 .. rubric:: Acceptance Criteria
 
 * There is a benchmark that measures the worst case time the AI blocks while
-  picking the next move.
+  picking a square.
 * How to run the benchmark is documented so developers can quickly evaluate this
   library to see if it meets their needs.
 
@@ -156,7 +158,8 @@ Getting Started Example
 .. rubric:: Acceptance Criteria
 
 * There is a runnable example of using the library.
-* The example is in a prominent location such as library's documentation.
+* The example is in a prominent location such as library's documentation's
+  home page.
 
 
 .. _ref-detailed-library-documentation-story:
@@ -166,7 +169,7 @@ Detailed Library Documentation
 ==============================
 | As a Rust application developer,
 | I want detailed and thorough library documentation,
-| so I can determine how to use the library from my specific needs.
+| so I can determine how to use the library for my specific needs.
 
 .. rubric:: Acceptance Criteria
 
@@ -189,13 +192,15 @@ Idiomatic Rust APIs
 
 .. rubric:: Acceptance Criteria
 
-* The Rust API Guidelines are consulted when designing the libraries API. [#RustAPIGuidelines]_
+* The Rust API Guidelines are consulted when designing the library's API. [#RustAPIGuidelines]_
 * An experienced Rust programmer code reviews and signs off on the library's API.
 
 .. rubric:: Notes
 
-This can be a subjective subject subject. However, providing an idiomatic Rust
-API is important to fulfilling the :ref:`ref-learn-about-rust-objective` objective.
+API design can be subjective. However, providing an idiomatic Rust API is important
+to fulfilling the :ref:`ref-learn-about-rust-objective` objective. Therefore,
+obtaining the onions of an experienced Rust programmer helps ensure the resulting
+design is reasonable and idiomatic.
 
 
 .. _ref-cross-platform-support-story:
@@ -218,21 +223,24 @@ The use of platform specific code is minimized, however, the number of platforms
 the library is tested on may be limited due to resource constraints.
 
 
+.. index:: crates.io
 .. _ref-available-on-crates-io-story:
 
 ======================
 Available on crates.io
 ======================
 | As a Rust application developer,
-| I want the library to be on `crates.io <https://crates.io/>`__,
+| I want the library to be on Rust's package registry, `<https://crates.io/>`__,
 | so that I can easily incorporate it into my Rust based application with Cargo.
 
 .. rubric:: Acceptance Criteria
 
-* The library can be downloaded from crates.io.
-* The library can be obtained by simply specifying it as a dependency in Cargo.toml.
+* The library is hosted on crates.io.
+* The library can be obtained by simply specifying it as a dependency in a
+  package's ``Cargo.toml``.
 
 
+.. index:: GitHub
 .. _ref-source-available-on-github-story:
 
 ==========================

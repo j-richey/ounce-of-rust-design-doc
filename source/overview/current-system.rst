@@ -45,11 +45,11 @@ the help of supporting libraries.
 Supporting Libraries
 ====================
 To support the creation of Tic Tac Toe games many libraries have been developed
-to provide common functionality. Searching Rust's package repository,
+to provide common functionality. Searching Rust's package registry,
 `<https://crates.io/>`__, reveals several such libraries including ``ultimate-ttt``,
 ``zero_sum``, and ``minimax``.
 
 With the wide verity of libraries available, for both Rust and other languages,
-there is likely one that meets the needs of Tic Tac Toe application developer.
-However, one of this projects objectives is :ref:`ref-learn-about-rust-objective`.
-Thus it is worth going through the effort to create another Tic Tac Toe library.
+there is likely one that meets the needs of Tic Tac Toe application developers.
+However, due to the :ref:`ref-learn-about-rust-objective` objective, is worth
+going through the effort to create another Tic Tac Toe library.

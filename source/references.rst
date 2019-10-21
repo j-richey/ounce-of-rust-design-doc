@@ -15,7 +15,7 @@
 ..  [Buckland-2004] Mat Buckland (2004) *Programming Game AI by Example*
 
 ..  [Rust-Docs] *Rust Documentation*. Available online at https://www.rust-lang.org/learn
-        and on any system with Rust installed by running `rustup doc`.
+        and on any system with Rust installed by running ``rustup doc``.
 
 ..  [Rust-Crate-std] *Crate std - The Rust Standard Library*. Retrieved from https://doc.rust-lang.org/std/index.html
 

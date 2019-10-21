@@ -34,7 +34,7 @@ An overview of the major public types is shown in :numref:`uml-public-api-overvi
 ..  _uml-public-api-overview:
 ..  uml::
     :caption: Major public modules, structures, and other types. Note: the
-        module contains additional supporting types.
+        module contains additional supporting types that are not shown here.
 
     hide members
 
@@ -57,12 +57,15 @@ user story.
 
 Each of the major and supporting types are described below.
 
+
+.. index:: Game struct
+
 ===============
 Game Management
 ===============
 Game management is handled by the Game structure. This structure is one of the
-central types provided by the crate. It contains the state machine logic and
-holds the underlying game board.
+central types provided by the library. It contains the state machine logic,
+holds the underlying game board, and enforces the rules of Tic Tac Toe.
 :numref:`uml-game-management` shows the Game structure along with the GameState
 enumeration.
 
@@ -157,6 +160,8 @@ start_next_game()
 * :ref:`ref-players-take-turns-having-first-move-story`
 
 
+.. index:: GameSate enum
+
 -------------
 Enum GameSate
 -------------
@@ -183,14 +188,13 @@ CatsGame
 
 is_game_over()
     Indicates if the state represents one of the game over states. That is,
-    if either player has won or it is a cat's game true is returned; otherwise,
-    false is returned.
+    if either player has won or it is a cat's game then ``true`` is returned;
+    otherwise, ``false`` is returned.
 
 
 ..  rubric:: Trait Implementations
 
 * Copy
-* Eq
 * Debug
 
 
@@ -198,6 +202,8 @@ is_game_over()
 
 * :ref:`ref-know-victory-squares-story`
 
+
+.. index:: Board struct
 
 ==========
 Board Data
@@ -241,7 +247,7 @@ in :numref:`uml-struct-board`.
     std::iter::Iterator <|-- FreeSquares
 
     class VictorySets {
-        +Item: slice<Square>
+        +Item: Vec<Square>
     }
     std::iter::Iterator <|-- VictorySets
 
@@ -324,6 +330,8 @@ debugging purposes. An example of the boards display is shown in
 * Clone
 
 
+.. index:: Square struct
+
 -------------
 Struct Square
 -------------
@@ -342,6 +350,9 @@ owner
 * Clone
 * Copy
 * Eq
+
+
+.. index:: Position struct
 
 ---------------
 Struct Position
@@ -366,6 +377,8 @@ column
 * Hash
 
 
+.. index:: Owner enum
+
 ----------
 Enum Owner
 ----------
@@ -389,6 +402,8 @@ None
 * Eq
 
 
+.. index:: Iter struct, FreeSquares struct, VictorySets struct
+
 ----------------------
 Iterating Over Squares
 ----------------------
@@ -405,6 +420,8 @@ VictorySets
     Iterates over all the sets of squares that, if all owned by a player, would
     make the player victorious.
 
+
+.. index:: AIMove struct
 
 ========
 AI Moves

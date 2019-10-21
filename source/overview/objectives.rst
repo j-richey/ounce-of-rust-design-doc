@@ -1,7 +1,10 @@
 #########################
 Objectives of the Project
 #########################
-This section describes the objectives of the Ounce of Rust project.
+
+The Ounce of Rust project intends to accomplish several objectives.
+This section describes these objectives.
+
 
 =================================================================
 Create Reusable Library to Speed Development of Tic Tac Toe Games
@@ -12,12 +15,13 @@ functionality includes game state management and artificial intelligence
 algorithms. The user interface for Tic Tac Toe games is outside the objectives
 of this project.
 
+
 =================================================
 Make the Library Open Source and Widely Available
 =================================================
 The resulting library is released under a permissive open source license and
 made widely available. This includes placing the code on a public repository
-such as `<https://github.com/>`__ and in Rust's crate registry,
+such as `<https://github.com/>`__ and in Rust's package registry,
 `<https://crates.io/>`__.
 
 
