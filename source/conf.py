@@ -9,7 +9,7 @@ copyright = '2019, James Richey'
 author = 'James Richey'
 
 # The full version, including alpha/beta/rc tags
-release = 'A draft 1'
+release = 'A draft 2'
 
 # Base name (with out the extension) of the PDF file.
 _pdf_base_name = "{project} Rev {release}".format(
@@ -69,6 +69,8 @@ html_theme_options = {
         "GitHub Source": "https://github.com/j-richey/ounce-of-rust-manual",
     },
 }
+
+html_favicon = "favicon.ico"
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
