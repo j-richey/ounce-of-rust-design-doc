@@ -64,8 +64,6 @@ html_theme_options = {
     'sidebar_collapse': True,
     'code_font_size': "0.8em",
     'extra_nav_links': {
-        "Download PDF": _pdf_base_name + ".pdf",
-        "View Single Page": "singlepage.html",
         "GitHub Source": "https://github.com/j-richey/ounce-of-rust-manual",
     },
 }
