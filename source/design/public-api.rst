@@ -94,7 +94,7 @@ enumeration.
         +is_game_over() -> bool
     }
 
-A state machine to determine which player has the next move or when the game
+A state machine is used determine which player has the next move or when the game
 is over. The state diagram is shown in :numref:`uml-game-state-diagram`.
 
 ..  _uml-game-state-diagram:

@@ -199,7 +199,7 @@ Idiomatic Rust APIs
 
 API design can be subjective. However, providing an idiomatic Rust API is important
 to fulfilling the :ref:`ref-learn-about-rust-objective` objective. Therefore,
-obtaining the onions of an experienced Rust programmer helps ensure the resulting
+obtaining the opinions of an experienced Rust programmer helps ensure the resulting
 design is reasonable and idiomatic.
 
 

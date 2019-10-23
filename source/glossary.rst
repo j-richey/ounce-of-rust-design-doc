@@ -36,6 +36,12 @@ Glossary
         A collection of pre-written software functionality that can be used by
         other applications.
 
+    Ounce of Rust
+        The code name for the project to make a :term:`Rust <Rust programming language>`
+        based Tic Tac Toe library. The etymology of this code name is a Tic Tac
+        Toe board is similar to a pound sign ( # ) but this project for making
+        just a part of full game: an ounce is part of a pound.
+
     package
         An organized collection of software components. In Rust, a package is a
         collection of :term:`crates <crate>`.
