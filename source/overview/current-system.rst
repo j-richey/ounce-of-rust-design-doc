@@ -49,7 +49,7 @@ to provide common functionality. Searching Rust's package registry,
 `<https://crates.io/>`__, reveals several such libraries including ``ultimate-ttt``,
 ``zero_sum``, and ``minimax``.
 
-With the wide verity of libraries available, for both Rust and other languages,
+With the wide variety of libraries available, for both Rust and other languages,
 there is likely one that meets the needs of Tic Tac Toe application developers.
 However, due to the :ref:`ref-learn-about-rust-objective` objective, is worth
 going through the effort to create another Tic Tac Toe library.

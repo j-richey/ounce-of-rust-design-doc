@@ -6,7 +6,7 @@ Introduction
 ======================
 Purpose of this Manual
 ======================
-This is the manual Ounce of Rust project. This manual describes in detail the
+This is the manual for the Ounce of Rust project. This manual describes in detail the
 objectives, requirements, and design considerations of the project providing a
 central location for this information. This is invaluable for understanding the
 project's scope, planning the project's milestones, and creating the project's
