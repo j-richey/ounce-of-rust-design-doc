@@ -10,7 +10,7 @@ This section describes how the Tic Tac Toe library is shared with others.
 MIT License
 ===========
 The library's code is released under the MIT license. [#mitlicense]_ The MIT
-license is short and simple that allows for both commercial and private use.
+license is simple and allows for use with open source, commercial, or private projects.
 
 The library's source code repository contains a ``LICENSE.txt`` file that includes
 the text of the MIT license. Additionally, the ``README.md`` file mentions the
@@ -28,7 +28,7 @@ this license.
 Publishing to crates.io
 =======================
 Crates.io is the Rust community's package registry. Uploading the Tic Tac Toe
-package to cargo.io allows others to easily grab the library using the Rust
+package to cargo.io allows others to easily obtain the library using the Rust
 package manager, Cargo.
 
 See `Publishing on crates.io <https://doc.rust-lang.org/cargo/reference/publishing.html>`_

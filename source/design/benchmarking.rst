@@ -20,8 +20,8 @@ case AI move.
         b.iter(|| AIMove::new(game, mistake_probability));
     }
 
-The worst case is time is for a new game and a zero percent mistake probability.
-Under these situations the :doc:`ai-algorithms` have to evaluate the entire
+The worst case update time is for a new game and a zero percent mistake probability.
+Under this situation the :doc:`ai-algorithms` have to evaluate the entire
 problem space.
 
 The library's source code repository ``README.md`` file contains instructions on

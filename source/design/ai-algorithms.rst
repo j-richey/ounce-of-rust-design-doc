@@ -17,7 +17,7 @@ on the current state of the game board. An example is shown in
     The possible outcomes of selecting a particular square are marked with W for
     win, L for loss, and C for cat's game.
 
-The algorithm selects a free position then traverses the tree looking one of the
+The algorithm selects a free position then traverses the tree looking for one of the
 end game conditions: win, loss, or cat's game. Once the end of the game is found,
 the result is propagated up the tree. The algorithm assumes the opponent will
 play a perfect game. That is, if a specific position leads for both a win for the

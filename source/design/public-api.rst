@@ -28,6 +28,10 @@ in this section.
     show Struct members
     show Enum fields
 
+    ' Hidden links are used to help with the diagram's layout.
+    Module -[hidden] Trait
+    Trait -[hidden] Struct
+    Struct -[hidden] Enum
 
 An overview of the major public types is shown in :numref:`uml-public-api-overview`.
 
@@ -125,7 +129,8 @@ Struct Game
 Members of the Game structure are as follows:
 
 new()
-    Creates a new Tic Tac Toe game.
+    Creates a new Tic Tac Toe game structure. Note: use ``start_next_game()`` for
+    playing consecutive games to ensure each player gets to start the game.
 
 board()
     Gets the board associated with the game.
