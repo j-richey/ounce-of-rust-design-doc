@@ -3,7 +3,7 @@ Rules of Tic Tac Toe
 ####################
 
 The Tic Tac Toe library provides functionality for managing the game and
-ensuring players only make valid moves. This requires the library's logic know
+ensuring players only make valid moves. This requires the library's logic to know
 the rules of Tic Tac Toe. The rules for Tic Tac Toe are as follows:
 
 1.  Play occurs on a board composed of a 3 x 3 grid of squares. The board starts

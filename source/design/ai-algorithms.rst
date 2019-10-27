@@ -75,7 +75,7 @@ resulting variant is passed to the lower level ``evaluate_game()`` function.
 The ``best_position()`` function takes the collection of outcome and position
 tuples and picks a position with the best outcome. The ordering of outcomes from
 best to worst are: ``Win``, ``CatsGame``, ``Unknown``, ``Loss``. A cats game is
-considered better than unknown as the AI rather have the game end in a draw than
+considered better than unknown as the AI would rather have the game end in a draw than
 risk a loss. If there are multiple positions with the same outcome, one of the
 positions is picked at random.
 

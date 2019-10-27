@@ -51,5 +51,5 @@ to provide common functionality. Searching Rust's package registry,
 
 With the wide variety of libraries available, for both Rust and other languages,
 there is likely one that meets the needs of Tic Tac Toe application developers.
-However, due to the :ref:`ref-learn-about-rust-objective` objective, is worth
+However, due to the :ref:`ref-learn-about-rust-objective` objective, it is worth
 going through the effort to create another Tic Tac Toe library.
