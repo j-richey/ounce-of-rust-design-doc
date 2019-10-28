@@ -2,5 +2,5 @@
 Significant changes to the Ounce of Rust project manual are described here.
 
 
-## Rev A - Unreleased
+## Rev A - 2019-10-27
 Initial release
