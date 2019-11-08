@@ -44,14 +44,14 @@ An overview of the major public types is shown in :numref:`uml-public-api-overvi
 
     package tic_tac_toe {
         enum Owner
-        enum GameState
+        enum State
 
         Game o-- Board
-        Game o- GameState
+        Game *- State
 
-        Board "1" *-- "n" Square
-        Square o- Owner
-        AIMove .> Game
+        Board "1" *-- "n" Position
+        Position o- Owner
+        AIOpponent .> Game
     }
 
 The library contains a single public module that holds the public types. The
@@ -70,7 +70,7 @@ Game Management
 Game management is handled by the Game structure. This structure is one of the
 central types provided by the library. It contains the state machine logic,
 holds the underlying game board, and enforces the rules of Tic Tac Toe.
-:numref:`uml-game-management` shows the Game structure along with the GameState
+:numref:`uml-game-management` shows the Game structure along with the State
 enumeration.
 
 ..  _uml-game-management:
@@ -82,20 +82,31 @@ enumeration.
     class Game {
         +new()
         +board() -> Board
-        +state() -> GameState
-        +can_move(position) -> bool
-        +do_move(position)
-        +start_next_game()
+        +state() -> State
+        +free_positions() -> FreePositions
+        +can_move(Position) -> bool
+        +do_move(Position) -> Result<State, InvalidMoveError>
+        +start_next_game() -> State
     }
 
-    enum GameState {
+    enum State {
         PlayerXMove
         PlayerOMove
-        PlayerXWin[VictorySets]
-        PlayerOWin[VictorySets]
+        PlayerXWin[HashSet<Position>]
+        PlayerOWin[HashSet<Position>]
         CatsGame
 
         +is_game_over() -> bool
+    }
+
+    class FreePositions << Iterator >> {
+        +Item: Position
+        +next() -> Option<Item>
+    }
+
+
+    class InvalidMoveError << Error >> {
+
     }
 
 A state machine is used determine which player has the next move or when the game
@@ -138,6 +149,11 @@ board()
 state()
     Gets the current state of the game.
 
+free_positions()
+    Gets an iterator that iterates the free positions that do not have an owner
+    and thus can be provided to ``do_move()``. When the game is over there are no
+    free positions.
+
 can_move()
     Indicates if the square at the indicated position can be marked as owned.
     That is, if ``can_move()`` returns ``true`` then ``do_move()`` is guaranteed
@@ -165,11 +181,32 @@ start_next_game()
 * :ref:`ref-players-take-turns-having-first-move-story`
 
 
-.. index:: GameSate enum
+---------------------
+Struct Free Positions
+---------------------
 
--------------
-Enum GameSate
--------------
+
+..  rubric:: Trait Implementations
+
+* Iterator
+
+
+-------------------------
+Struct Invalid Move Error
+-------------------------
+
+
+..  rubric:: Trait Implementations
+
+* Error
+
+
+
+.. index:: Sate enum
+
+---------
+Enum Sate
+---------
 The game state enumeration contains a variant for each possible game state
 described in :numref:`uml-game-state-diagram` along with some additional helper
 methods.
@@ -180,11 +217,11 @@ PlayerXMove
 PlayerOMove
     Player O's turn to mark an empty square.
 
-PlayerXWin[VictorySets]
+PlayerXWin[HashSet<position>]
     Player X has won the game. The victory sets that contributed to the win are
     provided as the enum value.
 
-PlayerOWin[VictorySets]
+PlayerOWin[HashSet<position>]
     Player O has won the game. The victory sets that contributed to the win are
     provided as the enum value.
 
@@ -199,8 +236,9 @@ is_game_over()
 
 ..  rubric:: Trait Implementations
 
-* Copy
+* Clone
 * Debug
+* Eq
 
 
 ..  rubric:: Related Requirements
@@ -227,43 +265,27 @@ in :numref:`uml-struct-board`.
     hide empty methods
 
     class Board {
-        +new()
-        +size() -> i32
-        +get(position) -> Square
-        +get_mut(position) -> Square
+        +new(Size)
+        +size() -> Size
+        +contains(Position) -> bool
+        +get(Position) -> Option<&Owner>
+        +get_mut(Position) -> Option<&mut Owner>
         +iter() -> Iter
-        +free_squares() -> FreeSquares
-        +victory_sets() -> VictorySets
     }
 
-    interface std::iter::Iterator {
-        +Item: type
+    class Iter << Iterator >> {
+        +Item: (Position, Owner)
         +next() -> Option<Item>
     }
 
-    class Iter {
-        +Item: Square
-    }
-    std::iter::Iterator <|-- Iter
-
-    class FreeSquares {
-        +Item: Square
-    }
-    std::iter::Iterator <|-- FreeSquares
-
-    class VictorySets {
-        +Item: Vec<Square>
-    }
-    std::iter::Iterator <|-- VictorySets
-
-    class Square {
-        +position: Position
-        +owner: Owner
+    class Size {
+        +rows: usize
+        +columns: usize
     }
 
     class Position {
-        +row: i32
-        +column: i32
+        +row: usize
+        +column: usize
     }
 
     enum Owner {
@@ -273,9 +295,8 @@ in :numref:`uml-struct-board`.
     }
 
     ' Hidden links are used to help with the diagram's layout.
-    Board -[hidden] std::iter::Iterator
-    VictorySets -[hidden]- Owner
-    Square -[hidden] Position
+    Board -[hidden]- Size
+    Size -[hidden] Position
     Position -[hidden] Owner
 
 ------------
@@ -302,14 +323,6 @@ get_mut()
 iter()
     Gets an iterator that iterates over all the squares in the board.
 
-free_squares()
-    Gets an iterator that iterates the squares in the board that do not have an
-    owner.
-
-victory_sets()
-    Gets an iterator that iterates over all the sets of squares that, if all
-    owned by a player, would make the player victorious. E.g. this gets all the
-    rows, columns, and both diagonals as slices.
 
 The board structure also implements the Display trait. This provides a formatted
 output of the board and is suitable for use in simple console applications or
@@ -334,30 +347,44 @@ debugging purposes. An example of the boards display is shown in
 * Display
 * Clone
 
+-----------
+Struct Iter
+-----------
+Implements the iterator trait for iterating over all the positions of the board.
 
-.. index:: Square struct
+next()
+    Gets the next position in the board, or None if the end of the board has been
+    reached.
 
--------------
-Struct Square
--------------
-Represents an individual square of the game board.
+.. TODO: Remove the following paragraph:
 
-position
-    The position the square is located at on the board.
+The board structure provides several ways to iterate over board's squares. [#iterators]_
+Helper types that implement the Iterator trait are used to provide this support.
 
-owner
-    The owner of the square.
+
+
+
+-----------
+Struct Size
+-----------
+The size structure represents the size of the board in number of rows and columns.
+
+rows
+    The number of rows in the board.
+
+columns
+    The number of column in the board.
 
 
 ..  rubric:: Trait Implementations
 
 * Debug
-* Clone
 * Copy
+* Clone
+* From<(usize, usize)>
 * Eq
+* Hash
 
-
-.. index:: Position struct
 
 ---------------
 Struct Position
@@ -377,7 +404,7 @@ column
 * Debug
 * Copy
 * Clone
-* From<(i32, i32)>
+* From<(usize, usize)>
 * Eq
 * Hash
 
@@ -401,48 +428,40 @@ None
 
 ..  rubric:: Trait Implementations
 
+* Default
 * Debug
 * Copy
 * Clone
 * Eq
+* Hash
 
 
-.. index:: Iter struct, FreeSquares struct, VictorySets struct
-
-----------------------
-Iterating Over Squares
-----------------------
-The board structure provides several ways to iterate over board's squares. [#iterators]_
-Helper types that implement the Iterator trait are used to provide this support.
-
-Iter
-    Iterates over all the squares in the board.
-
-FreeSquares
-    Iterates over squares that do not have an owner.
-
-VictorySets
-    Iterates over all the sets of squares that, if all owned by a player, would
-    make the player victorious.
+..  TODO:
+    * Remove FreeSquares and VictorySets from this
+    * Make a WinSquares structure thing.
+      * It contains all the winning squares -> can somehow get an iterator to these
+      * Why not just a vector?
+    * This is part of the game state, so must be cloned and equality comparable.
+    * Clean up AI pesudo code.
 
 
-.. index:: AIMove struct
+.. index:: AIOpponent struct
 
-========
-AI Moves
-========
-The AI move structure represents a move by an AI player. The AI move structure is
+===========
+AI Opponent
+===========
+The AI opponent structure represents a move by an AI player. The AI move structure is
 shown in :numref:`uml-struct-ai-move`.
 
 ..  _uml-struct-ai-move:
 ..  uml::
-    :caption: AI Move structure.
+    :caption: AI Opponent structure.
 
     hide empty fields
 
-    class AIMove {
-        +new(game, mistake_probability)
-        +position() -> Position
+    class AIOpponent {
+        +new(mistake_probability)
+        +get_move(Game) -> Position
     }
 
 

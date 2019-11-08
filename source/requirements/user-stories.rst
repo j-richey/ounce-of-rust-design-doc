@@ -46,6 +46,9 @@ Know Squares that Contributed to Player's Victory
 
 * When a player has won the game there is a way to obtain the board's squares
   that contributed to the victory.
+* If the player won by getting multiple sets of squares as shown in
+  :numref:`fig-example-wining-games` then all square that contributed to the
+  win are available.
 
 
 .. index:: semantic versioning

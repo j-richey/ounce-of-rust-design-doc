@@ -59,10 +59,10 @@ and returns the best position for the AI to place its mark.
         # that square. The outcome for each position and the position
         # is recorded.
         outcomes = []
-        for square in game.board().free_squares():
+        for position in game.free_positions():
              outcomes = evaluate_position(
-                square.position, game, ai_player, mistake_probability)
-             outcomes.push((outcome, square.position))
+                position, game, ai_player, mistake_probability)
+             outcomes.push((outcome, position))
 
         # Return the best position based on the outcomes.
         return best_position(outcomes)
@@ -95,7 +95,7 @@ The ``evaluate_position()`` function is responsible for evaluate a specific posi
         # Clone the game so this function can try out the move without
         # modifying the original game.
         game = game.clone()
-        game.do_move(square.position)
+        game.do_move(position)
 
         # Check to see if the game is over. If so, return the
         # outcome of the game from the AI's perspective,
@@ -107,9 +107,9 @@ The ``evaluate_position()`` function is responsible for evaluate a specific posi
         # free squares. Note: the game automatically takes care of
         # switching between player X's and player O's turn.
         outcomes = []
-        for square in game.board().free_squares():
+        for position in game.free_positions():
             outcome = evaluate_position(
-                square.position, game, ai_player, mistake_probability)
+                position, game, ai_player, mistake_probability)
             outcomes.push(outcome)
 
         # The AI assumes the other player plays a perfect game,
