@@ -6,3 +6,6 @@
 
 # Ignore cruft created by IDEs
 .idea
+
+# Python virtual environment
+/pyvenv

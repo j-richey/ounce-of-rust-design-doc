@@ -9,7 +9,7 @@ copyright = '2019, James Richey'
 author = 'James Richey'
 
 # The full version, including alpha/beta/rc tags
-release = 'A'
+release = 'B draft 1'
 
 # Base name (with out the extension) of the PDF file.
 _pdf_base_name = "{project} Rev {release}".format(
@@ -69,12 +69,6 @@ html_theme_options = {
 }
 
 html_favicon = "favicon.ico"
-
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
 
 
 # -- Options for LaTeX output -------------------------------------------------
