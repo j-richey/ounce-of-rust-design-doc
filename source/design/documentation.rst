@@ -20,9 +20,10 @@ yet complete Tic Tac Toe game that uses the APIs provided by the library.
 Additionally, the example code is exercised as part of the library's tests which
 help developers detect if a public API has changed.
 
-The ``deny(missing_docs)`` attribute is added to ``lib.rs`` to ensure all public
-items are documented. Any public item that is not documented causes a compile
-time error.
+The :doc:`continuous-integration` system is configured to ensure all public
+items are documented. Any public item that is not documented causes a build
+error to be reported.
+
 
 ..  rubric:: Related Requirements
 

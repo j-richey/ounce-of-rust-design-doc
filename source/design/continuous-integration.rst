@@ -7,6 +7,9 @@ The Tic Tac Toe library uses the `Travis CI <https://travis-ci.com/>`_
 continuous integration system to build and test every commit on a variety of
 platforms. [#multios]_ This ensures potential problems are found as soon as possible.
 
+The continuous integration system also enforces additional rules such as requiring
+the project have fully documented public APIs and contain no unused code.
+
 A ``.travis.yml`` included in the library's source code repository tells Travis CI
 how to build and test the code. The `Travis CI Tutorial <https://docs.travis-ci.com/user/tutorial/>`_
 provides a starting point on how to create the ``.travis.yml`` file.
