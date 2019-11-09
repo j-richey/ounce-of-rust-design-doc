@@ -42,16 +42,16 @@ An overview of the major public types is shown in :numref:`uml-public-api-overvi
 
     hide members
 
-    package tic_tac_toe {
+    package open_ttt_lib {
         enum Owner
         enum State
 
-        Game o-- Board
-        Game *- State
+        Game *-- Board
+        Game *-- State
 
-        Board "1" *-- "n" Position
-        Position o- Owner
-        AIOpponent .> Game
+        Board "1..*" *-- Position
+        Board "1..*" *-- Owner
+        Game <. AIOpponent
     }
 
 The library contains a single public module that holds the public types. The
@@ -70,14 +70,15 @@ Game Management
 Game management is handled by the Game structure. This structure is one of the
 central types provided by the library. It contains the state machine logic,
 holds the underlying game board, and enforces the rules of Tic Tac Toe.
-:numref:`uml-game-management` shows the Game structure along with the State
-enumeration.
+:numref:`uml-game-management` shows the Game structure and other types related
+to management of Tic Tac Toe games.
 
 ..  _uml-game-management:
 ..  uml::
-    :caption: The Game structure and GameState enumeration.
+    :caption: The Game structure contains a State and a Board.
 
     hide empty fields
+    hide empty methods
 
     class Game {
         +new()
@@ -104,10 +105,14 @@ enumeration.
         +next() -> Option<Item>
     }
 
-
     class InvalidMoveError << Error >> {
 
     }
+
+    Game *-- Board
+    Game *-- State
+    FreePositions --[hidden] InvalidMoveError
+
 
 A state machine is used determine which player has the next move or when the game
 is over. The state diagram is shown in :numref:`uml-game-state-diagram`.
@@ -150,23 +155,25 @@ state()
     Gets the current state of the game.
 
 free_positions()
-    Gets an iterator that iterates the free positions that do not have an owner
-    and thus can be provided to ``do_move()``. When the game is over there are no
-    free positions.
+    Gets an iterator over the free positions that do not have an owner and thus
+    can be provided to ``do_move()``. When the game is over there are no free
+    positions.
 
 can_move()
     Indicates if the square at the indicated position can be marked as owned.
-    That is, if ``can_move()`` returns ``true`` then ``do_move()`` is guaranteed
-    to not panic.
+    That is, if ``can_move()`` returns ``true`` for a given position then
+    ``do_move()`` is guaranteed to be successful.
 
 do_move()
     Marks the indicated square as being owned by the current player. The state
-    of the game is updated as a side effect of ``do_move()``.
-    Panics if the indicated position is already owned or if the game is over.
+    of the game is updated as a side effect of ``do_move()`` and the new state
+    of the game is returned. An error is returned if the position is already
+    owned or if the game is over.
 
 start_next_game()
     Starts the next game by resetting the state machine ensuring the player who
-    went second last game goes first next game.
+    went second last game goes first next game. This can be called at any time
+    even if the current game is not over. The new state of the game is returned.
 
 
 ..  rubric:: Trait Implementations
@@ -181,27 +188,6 @@ start_next_game()
 * :ref:`ref-players-take-turns-having-first-move-story`
 
 
----------------------
-Struct Free Positions
----------------------
-
-
-..  rubric:: Trait Implementations
-
-* Iterator
-
-
--------------------------
-Struct Invalid Move Error
--------------------------
-
-
-..  rubric:: Trait Implementations
-
-* Error
-
-
-
 .. index:: Sate enum
 
 ---------
@@ -212,18 +198,18 @@ described in :numref:`uml-game-state-diagram` along with some additional helper
 methods.
 
 PlayerXMove
-    Player X's turn to mark an empty square.
+    Player X's turn to mark an free position.
 
 PlayerOMove
-    Player O's turn to mark an empty square.
+    Player O's turn to mark an free position.
 
 PlayerXWin[HashSet<position>]
-    Player X has won the game. The victory sets that contributed to the win are
-    provided as the enum value.
+    Player X has won the game. The set of positions that contributed to the win
+    are provided as the enum value.
 
 PlayerOWin[HashSet<position>]
-    Player O has won the game. The victory sets that contributed to the win are
-    provided as the enum value.
+    Player O has won the game. The set of positions that contributed to the win
+    are provided as the enum value.
 
 CatsGame
     The game has ended in a draw where there are no winners.
@@ -233,6 +219,11 @@ is_game_over()
     if either player has won or it is a cat's game then ``true`` is returned;
     otherwise, ``false`` is returned.
 
+The set of positions provided to ``PlayerXWin`` and  ``PlayerOWin`` contain all
+the positions that contributed to the victory. Usually, there will be three items
+in this set representing a row, column, or diagonal. However, there are some
+situations as :numref:`fig-example-wining-games` where more than three squares
+can contribute to a victory.
 
 ..  rubric:: Trait Implementations
 
@@ -246,15 +237,41 @@ is_game_over()
 * :ref:`ref-know-victory-squares-story`
 
 
+---------------------
+Struct Free Positions
+---------------------
+An iterator over free positions that do not have an owner. [#iterators]_
+
+next()
+    Gets the next free position in the board, or None once all the free positions
+    have been returned.
+
+
+..  rubric:: Trait Implementations
+
+* Iterator
+
+
+-------------------------
+Struct Invalid Move Error
+-------------------------
+Used to indicate moving to the indicated position is invalid. This could be due
+to the position being owned or the game being over.
+
+..  rubric:: Trait Implementations
+
+* Error
+
+
 .. index:: Board struct
 
 ==========
 Board Data
 ==========
-The board structure models a Tic Tac Toe game board. It holds the individual
-squares of the board and provides functions to access and iterate over the
-squares. The board and square structures along with supporting types are shown
-in :numref:`uml-struct-board`.
+The board structure models a Tic Tac Toe game board. It maps the individual
+positions to owners of the position. It provides functions to access and iterate
+over each position. The board and square structures along with supporting types
+are shown in :numref:`uml-struct-board`.
 
 
 ..  _uml-struct-board:
@@ -268,19 +285,14 @@ in :numref:`uml-struct-board`.
         +new(Size)
         +size() -> Size
         +contains(Position) -> bool
-        +get(Position) -> Option<&Owner>
-        +get_mut(Position) -> Option<&mut Owner>
+        +get(Position) -> Option<Owner>
+        +get_mut(Position) -> Option<mut Owner>
         +iter() -> Iter
     }
 
     class Iter << Iterator >> {
         +Item: (Position, Owner)
         +next() -> Option<Item>
-    }
-
-    class Size {
-        +rows: usize
-        +columns: usize
     }
 
     class Position {
@@ -294,10 +306,15 @@ in :numref:`uml-struct-board`.
         None
     }
 
-    ' Hidden links are used to help with the diagram's layout.
-    Board -[hidden]- Size
-    Size -[hidden] Position
-    Position -[hidden] Owner
+    class Size {
+        +rows: usize
+        +columns: usize
+    }
+
+    Board "1..*" *-- Position
+    Board "1..*" *-- Owner
+    Board *-- Size
+
 
 ------------
 Struct Board
@@ -306,19 +323,20 @@ Data structure representing the Tic Tac Toe board. Provides multiple ways to
 access individual squares.
 
 new()
-    Constructs a new board.
+    Constructs a new board based on the given size. Panics if the size is less
+    than one row and one column.
 
 size()
     Gets the size of board, that is the number of rows and columns.
-    Note: boards are always square.
 
 get()
-    Gets the square at the indicated position. Panics if requested position is
-    outside the size of the board.
+    Gets the owner of the provided position. None is returned if requested
+    position is outside the size of the board.
 
 get_mut()
-    Gets a mutable square at the indicated position. Panics under the same
-    situations as get().
+    Gets a mutable reference ot the owner at the indicated position. This allows
+    the owner of the position to be changed. None is returned if requested
+    position is outside the size of the board.
 
 iter()
     Gets an iterator that iterates over all the squares in the board.
@@ -350,18 +368,12 @@ debugging purposes. An example of the boards display is shown in
 -----------
 Struct Iter
 -----------
-Implements the iterator trait for iterating over all the positions of the board.
+Implements the iterator trait for iterating over all the positions and owner
+pairs of the board.
 
 next()
-    Gets the next position in the board, or None if the end of the board has been
-    reached.
-
-.. TODO: Remove the following paragraph:
-
-The board structure provides several ways to iterate over board's squares. [#iterators]_
-Helper types that implement the Iterator trait are used to provide this support.
-
-
+    Gets a tuple containing the next position and owner of that position. None
+    is returned if the end of the board has been reached.
 
 
 -----------
@@ -414,16 +426,16 @@ column
 ----------
 Enum Owner
 ----------
-The owner enumeration indicates which player owns a square, if any.
+The owner enumeration indicates which player owns a position, if any.
 
 PlayerX
-    Player X owns the square.
+    Player X owns the position.
 
 PlayerO
-    Player O owns the square.
+    Player O owns the position.
 
 None
-    No player owns the square.
+    No player owns the position.
 
 
 ..  rubric:: Trait Implementations
@@ -436,24 +448,15 @@ None
 * Hash
 
 
-..  TODO:
-    * Remove FreeSquares and VictorySets from this
-    * Make a WinSquares structure thing.
-      * It contains all the winning squares -> can somehow get an iterator to these
-      * Why not just a vector?
-    * This is part of the game state, so must be cloned and equality comparable.
-    * Clean up AI pesudo code.
-
-
 .. index:: AIOpponent struct
 
 ===========
 AI Opponent
 ===========
-The AI opponent structure represents a move by an AI player. The AI move structure is
-shown in :numref:`uml-struct-ai-move`.
+The AI opponent structure represents a computer controlled AI player. The AI
+opponent structure is shown in :numref:`uml-struct-ai-opponent`.
 
-..  _uml-struct-ai-move:
+..  _uml-struct-ai-opponent:
 ..  uml::
     :caption: AI Opponent structure.
 
@@ -461,7 +464,7 @@ shown in :numref:`uml-struct-ai-move`.
 
     class AIOpponent {
         +new(mistake_probability)
-        +get_move(Game) -> Position
+        +get_move(Game) -> Option<Position>
     }
 
 
@@ -470,12 +473,16 @@ See :doc:`ai-algorithms` for details on how the AI selects a position.
 ..  rubric:: Member Details
 
 new()
-    Constructs a new AI move using the provided game and a given probability of
-    making a mistake. Panics if the game is over.
+    Constructs a new AI opponent. The mistake probability indicates how likely
+    the AI will fail to consider various situations. A value of 0.0 makes the
+    AI play a perfect game. A value of 1.0 causes the AI to always pick a random
+    position. Values less than 0.0 are set to 0.0 and values greater than
+    1.0 are set to 1.0.
 
-position()
-    Gets the position selected by the AI player based on the previously provided
-    game.
+get_move()
+    Gets the position the AI opponent wishes to move based on the provided game.
+    None is returned if the game is over. The AI opponent never tries to select
+    an invalid position, that is a position that is not free.
 
 
 ..  rubric:: Trait Implementations
