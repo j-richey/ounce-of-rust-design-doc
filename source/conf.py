@@ -9,7 +9,7 @@ copyright = '2019, James Richey'
 author = 'James Richey'
 
 # The full version, including alpha/beta/rc tags
-release = 'B draft 1'
+release = 'B'
 
 # Base name (with out the extension) of the PDF file.
 _pdf_base_name = "{project} Rev {release}".format(
@@ -85,8 +85,11 @@ latex_documents = [(
 latex_show_urls = 'footnote'
 
 latex_elements = {
+    'preamble': r'\usepackage{custom}',
     'releasename': 'Rev.',
 }
+
+latex_additional_files = ["_themes/custom.sty"]
 
 
 # -- Options for Plant UML -------------------------------------------------

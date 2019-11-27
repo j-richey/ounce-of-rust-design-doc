@@ -1,3 +1,5 @@
+.. index:: API, application programming interface
+
 ##########
 Public API
 ##########
@@ -198,10 +200,10 @@ described in :numref:`uml-game-state-diagram` along with some additional helper
 methods.
 
 PlayerXMove
-    Player X's turn to mark an free position.
+    Player X's turn to mark a free position.
 
 PlayerOMove
-    Player O's turn to mark an free position.
+    Player O's turn to mark a free position.
 
 PlayerXWin[HashSet<position>]
     Player X has won the game. The set of positions that contributed to the win
@@ -237,6 +239,8 @@ can contribute to a victory.
 * :ref:`ref-know-victory-squares-story`
 
 
+.. index:: FreePositions struct
+
 ---------------------
 Struct Free Positions
 ---------------------
@@ -251,6 +255,8 @@ next()
 
 * Iterator
 
+
+.. index:: InvalidMoveError struct
 
 -------------------------
 Struct Invalid Move Error
@@ -296,8 +302,8 @@ are shown in :numref:`uml-struct-board`.
     }
 
     class Position {
-        +row: usize
-        +column: usize
+        +row: i32
+        +column: i32
     }
 
     enum Owner {
@@ -307,8 +313,8 @@ are shown in :numref:`uml-struct-board`.
     }
 
     class Size {
-        +rows: usize
-        +columns: usize
+        +rows: i32
+        +columns: i32
     }
 
     Board "1..*" *-- Position
@@ -365,6 +371,9 @@ debugging purposes. An example of the boards display is shown in
 * Display
 * Clone
 
+
+.. index:: Iter struct
+
 -----------
 Struct Iter
 -----------
@@ -375,6 +384,8 @@ next()
     Gets a tuple containing the next position and owner of that position. None
     is returned if the end of the board has been reached.
 
+
+.. index:: Size struct
 
 -----------
 Struct Size
@@ -397,6 +408,8 @@ columns
 * Eq
 * Hash
 
+
+.. index:: Position struct
 
 ---------------
 Struct Position

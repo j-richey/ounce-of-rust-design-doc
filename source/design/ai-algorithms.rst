@@ -116,6 +116,9 @@ The ``evaluate_position()`` function is responsible for evaluate a specific posi
         # so return the worst outcome that was found.
         return worst_outcome(outcomes)
 
+
+.. index:: mistake probability
+
 The ``should_make_mistake()`` function takes the mistake probability and returns
 ``true`` if the algorithm should skip examining this branch of the tree. The
 ``Unknown`` outcome is used for parts of the tree that are skipped.

@@ -2,7 +2,7 @@
 Significant changes to the Ounce of Rust project manual are described here.
 
 
-## Rev B - Unreleased
+## Rev B - 2019-11-27
 
 ### Requirements
 
