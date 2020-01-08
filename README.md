@@ -1,7 +1,7 @@
 # Ounce of Rust Project Manual
 This repository contains the Ounce of Rust project manual. This document
-describes in detail the objectives requirements, and design considerations of t
-he project. Anyone who is involved with this project is encouraged to read this
+describes in detail the objectives requirements, and design considerations of
+the project. Anyone who is involved with this project is encouraged to read this
 manual and keep a copy handy while they are working on the project.
 
 The latest version is hosted here: 
