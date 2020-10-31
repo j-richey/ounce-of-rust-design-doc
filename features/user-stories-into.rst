@@ -14,10 +14,3 @@ the acceptance criteria for each story.
 ..  Note:
     The remaining part of this chapter is generated from the .feature files found
     in this directory.
-
-
-.. toctree::
-    :maxdepth: 1
-
-    features.example.feature-file
-    features.game-state-management.feature-file

@@ -1,6 +1,8 @@
 # Change Log
 Significant changes to the Ounce of Rust project manual are described here.
 
+## Rev C - UNRELEASED
+
 
 ## Rev B - 2019-11-27
 
@@ -21,7 +23,7 @@ Significant changes to the Ounce of Rust project manual are described here.
 * **Changed:** AIMove struct is renamed to AIOpponent. The AIOpponent struct
   is not intended to be recreated every move like the old AIMove was.
 * **Changed:** Public APIs now prefer to return an Error Result or None Option 
-  type instead of panicking.  
+  type instead of panicking.
 * **Changed:** The continuous integration system enforces documentation for 
   public APIs instead of making the Rust compiler do this check.
 

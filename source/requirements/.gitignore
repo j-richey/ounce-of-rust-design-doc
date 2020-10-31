@@ -1,0 +1,2 @@
+# Ignore the auto generated feature descriptions.
+*.feature-file.rst

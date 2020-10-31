@@ -3,11 +3,12 @@
 
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
+FEATUREDIR    = features
 BUILDDIR      = build
 PDFOUTPUT	  = $(wildcard $(BUILDDIR)/latex/*project*manual*.pdf)
 
 
-.PHONY: all html html-open singlehtml pdf _convert_svg linkcheck clean help
+.PHONY: all html html-open singlehtml pdf linkcheck clean help
 
 
 # All simply builds all the various outputs then ensures a copy of the PDF and
@@ -20,7 +21,7 @@ all: html singlehtml pdf
 	@cp -v "$(PDFOUTPUT)" "$(BUILDDIR)/html/"
 
 
-html:
+html: _gherkin
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)"
 
 html-open: html
@@ -28,19 +29,15 @@ html-open: html
 
 # The single HTML page is copied into the HTML directory and renamed so it can
 # use the same resources. Not how the internal links are fixed up.
-singlehtml:
+singlehtml: _gherkin
 	@$(SPHINXBUILD) -M singlehtml "$(SOURCEDIR)" "$(BUILDDIR)"
 
 
 # Note: the -E is used to ensure the LaTeX gets a clean build. Sometimes the
 # HTML builds leave a dirty environment behind that cause the LaTeX builder to fail.
 # TODO: reduce the amount of output from this command.
-pdf: _convert_svg
+pdf: _convert_svg _gherkin
 	@$(SPHINXBUILD) -M latexpdf "$(SOURCEDIR)" "$(BUILDDIR)" -E
-
-
-_convert_svg:
-	@python3 convert-svg-to-pdf.py "$(SOURCEDIR)"
 
 
 linkcheck:
@@ -66,3 +63,14 @@ help:
 	@echo "  help        Shows this help message."
 	@echo ""
 	@echo "For details on how to build the documentation see the README."
+
+# Helper targets
+
+.PHONY:  _convert_svg _gherkin
+
+_convert_svg:
+	@python3 convert-svg-to-pdf.py "$(SOURCEDIR)"
+
+_gherkin:
+	@sphinx-gherkindoc --maxtocdepth 1 --toc-name user-stories --raw-descriptions \
+		"$(FEATUREDIR)" "$(SOURCEDIR)/requirements"

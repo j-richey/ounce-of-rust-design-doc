@@ -186,7 +186,7 @@ start_next_game()
 ..  rubric:: Related Requirements
 
 * :doc:`../requirements/ttt-rules`
-* :ref:`ref-game-state-management-story`
+* :doc:`../requirements/features.game-state-management.feature-file`
 * :ref:`ref-players-take-turns-having-first-move-story`
 
 
