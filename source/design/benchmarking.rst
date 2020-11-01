@@ -32,7 +32,7 @@ how to run the benchmarks.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-maximum-ai-update-time-story`
+* :doc:`../requirements/features.max-ai-update-time.feature-file`
 
 
 ..  rubric:: Footnotes

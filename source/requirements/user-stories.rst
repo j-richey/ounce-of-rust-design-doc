@@ -19,5 +19,18 @@ the acceptance criteria for each story.
 .. toctree::
     :maxdepth: 1
 
+    features.ai-difficulty-settings.feature-file
+    features.ai-player.feature-file
+    features.available-on-crates-io.feature-file
+    features.cross-platform-support.feature-file
     features.example.feature-file
     features.game-state-management.feature-file
+    features.getting-started-example.feature-file
+    features.idiomatic-rust-apis.feature-file
+    features.know-victory-squares.feature-file
+    features.library-documentation.feature-file
+    features.max-ai-update-time.feature-file
+    features.permissive-license.feature-file
+    features.players-take-turns-having-first-move.feature-file
+    features.source-available-on-github.feature-file
+    features.stable-library-api.feature-file

@@ -21,8 +21,8 @@ or failing.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-stable-library-api-story`
-* :ref:`ref-cross-platform-support-story`
+* :doc:`../requirements/features.stable-library-api.feature-file`
+* :doc:`../requirements/features.cross-platform-support.feature-file`
 
 
 ..  rubric:: Footnotes

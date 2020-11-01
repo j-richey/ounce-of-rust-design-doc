@@ -139,8 +139,8 @@ only if other information was not obtained about the position.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-ai-player-story`
-* :ref:`ref-ai-difficulty-settings-story`
+* :doc:`../requirements/features.ai-player.feature-file`
+* :doc:`../requirements/features.ai-difficulty-settings.feature-file`
 
 
 ..  rubric:: Footnotes

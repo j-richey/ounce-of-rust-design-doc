@@ -58,7 +58,7 @@ An overview of the major public types is shown in :numref:`uml-public-api-overvi
 
 The library contains a single public module that holds the public types. The
 naming conventions used in this library follow those described in the Rust API
-Guidelines [#RustAPIGuidelines]_ per the :ref:`ref-idiomatic-rust-apis-story`
+Guidelines [#RustAPIGuidelines]_ per the :doc:`../requirements/features.idiomatic-rust-apis.feature-file`
 user story.
 
 Each of the major and supporting types are described below.
@@ -187,7 +187,7 @@ start_next_game()
 
 * :doc:`../requirements/ttt-rules`
 * :doc:`../requirements/features.game-state-management.feature-file`
-* :ref:`ref-players-take-turns-having-first-move-story`
+* :doc:`../requirements/features.players-take-turns-having-first-move.feature-file`
 
 
 .. index:: Sate enum
@@ -236,7 +236,7 @@ can contribute to a victory.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-know-victory-squares-story`
+* :doc:`../requirements/features.know-victory-squares.feature-file`
 
 
 .. index:: FreePositions struct
@@ -505,8 +505,8 @@ get_move()
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-ai-player-story`
-* :ref:`ref-ai-difficulty-settings-story`
+* :doc:`../requirements/features.ai-player.feature-file`
+* :doc:`../requirements/features.ai-difficulty-settings.feature-file`
 
 
 

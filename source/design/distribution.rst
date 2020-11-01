@@ -19,7 +19,7 @@ this license.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-permissive-license-story`
+* :doc:`../requirements/features.permissive-license.feature-file`
 
 
 .. index:: crates.io
@@ -41,7 +41,7 @@ crates.io for the library.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-available-on-crates-io-story`
+* :doc:`../requirements/features.available-on-crates-io.feature-file`
 
 
 .. index:: GitHub
@@ -59,7 +59,7 @@ GitHub also takes care of the library's bug tracker.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-source-available-on-github-story`
+* :doc:`../requirements/features.source-available-on-github.feature-file`
 
 
 ..  rubric:: Footnotes

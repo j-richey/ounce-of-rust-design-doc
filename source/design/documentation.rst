@@ -27,9 +27,9 @@ error to be reported.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-stable-library-api-story`
-* :ref:`ref-detailed-library-documentation-story`
-* :ref:`ref-getting-started-example-story`
+* :doc:`../requirements/features.stable-library-api.feature-file`
+* :doc:`../requirements/features.library-documentation.feature-file`
+* :doc:`../requirements/features.getting-started-example.feature-file`
 
 
 .. index:: change log, semantic versioning
@@ -45,7 +45,7 @@ The change log also mentions how the library follows semantic versioning. [#rfc1
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-stable-library-api-story`
+* :doc:`../requirements/features.stable-library-api.feature-file`
 
 
 =======
@@ -62,7 +62,7 @@ download and build the documentation themselves.
 
 ..  rubric:: Related Requirements
 
-* :ref:`ref-detailed-library-documentation-story`
+* :doc:`../requirements/features.library-documentation.feature-file`
 
 
 ..  rubric:: Footnotes
