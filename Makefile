@@ -47,6 +47,10 @@ linkcheck:
 clean:
 	@$(SPHINXBUILD) -M clean "$(SOURCEDIR)" "$(BUILDDIR)"
 
+.PHONY: requirementscheck
+requirementscheck:
+	@behave -i features/getting-started-example.feature
+
 
 help:
 	@echo "Makefile for building the documentation."
